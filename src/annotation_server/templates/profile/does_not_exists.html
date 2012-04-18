@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ block.super }}
+<style>
+    .error {
+        color: red;
+    }
+    .right {
+        float: right; 
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="left w70">
+    <h1 class="error">User with username {{ username }} does not exists!</h1>
+
+    <p>Please go to <a href="{% url profile %}">your profile</a>
+</div>
+<div class="right">
+    <ul>
+        {% for user in all_users %}
+        <li><a href="{% url profile creator=user %}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block css %}
+<style>
+    .error {
+        background-color: red;
+        color: white;
+        display: block;
+    }
+    .ok {
+        background-color: green;
+        color: white;
+        display: block;
+    }
+    .menu {
+        margin: 0 50px 0 50px;
+    }
+
+    .menu h4 {
+        text-align: center;
+        float: right;
+    }
+
+</style>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+<script language="JavaScript">
+    FORMAT = ""
+    $(document).ready(function() {
+        $("<p>Ready</p>").addClass('ok').insertBefore('#post_form');
+
+        $("#content_type").change(function() {
+            if ($("#content_type").val() == 'XML') {
+                FORMAT = "text/xml";
+                $("#id_data").val("<annotation><body>Annotation body</body><type>Comment</type><target><url>http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc</url></target></annotation>")
+                } 
+                else {
+                    FORMAT = "application/json";
+                    $("#id_data").val('{"annotation": {"body": "Annotation body", "type":"Comment", "target": [{"url": "http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc"}]}}')
+                }
+            });
+
+        $("#post_data").click(function() {
+            url=$("#post_form").attr("action");
+            data = $("#id_data").val()
+
+            try {
+                eval("a="+data);
+                FORMAT = "application/json";
+            }
+            catch (err) {
+                FORMAT = "text/xml"
+            }
+
+            console.log(url);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                headers: {
+                    "X-Requested-With":"XMLHttpRequest",
+                    'Content-Type': FORMAT
+                },
+                data: data,
+                success: function(data) {
+                    // header
+                    $('.error,.ok').remove();
+                    $("<p>"+data+"</p>").addClass('ok').insertBefore('#post_form');
+
+                    // form
+                    $("#post_form").toggle('slow');
+                    if (!$(".posted_ok")) {
+                        $(".posted_ok")[0].show();
+                        } else 
+                        {
+                            $('.main').append('<h1 class="posted_ok">Posted!</h1>');
+                        }
+                    $("#id_data").val('');
+                    setTimeout("$('#post_form').toggle('slow');", 1000); 
+                    setTimeout("$('.posted_ok').hide('slow');", 3000);
+                },
+                error: function(data) {
+                    $("#post_form").append(data);
+                },
+                statusCode: {
+                    500: function(data) {
+                        $('.error,.ok').remove();
+                        $("<p>"+data.responseText+"</p>").addClass('error').insertBefore('#post_form')
+                    },
+                    501: function(data) {
+                        $('.error,.ok').remove();
+                        $("<p>"+data.responseText+"</p>").addClass('error').insertBefore('#post_form')
+                    },
+                    400: function(data) {
+                        $('.error,.ok').remove();
+                        $("<p>"+data.responseText+"</p>").addClass('error').insertBefore('#post_form')
+                    },
+                    '': function(data) {
+                        $('.error,.ok').remove();
+                        $("<p>"+data.responseText+"</p>").addClass('error').insertBefore('#post_form')
+                    },
+
+                },
+
+            });
+
+        });
+
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="menu">
+    <h4>
+        <a href="{% url test_uc1 %}">Test UC1</a>
+    </h4>
+</div>
+
+<form action="{% if request.user.is_authenticated %}{% url annotation_handler creator_id=request.user.id %}  {% else %}{% url annotation_handler creator_id=1005001%}{% endif %}" method="post" id="post_form">
+    <table>
+    <label for="content_type">Select content type: </label>
+    <select id="content_type" name="Content type">
+        <option selected="">---</option>
+        <option>JSON</option>
+        <option>XML</option>
+   </select>
+   {% csrf_token %}
+   {{ form.as_table }}
+   </table>
+    <input type="submit" id="post_data" onclick="return false;">
+</form>
+{% endblock %}

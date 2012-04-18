@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{{ block.super }}
+<style>
+    h1,h2,h3,h4,h5,h6 {
+        text-align: center;
+    }
+    table th, table td {
+        width: 150px;
+        text-align: center;
+    }
+    .targets {
+        width: 500px;
+    }
+    .right {
+        float: right; 
+    }
+    .left {
+        float: left;
+    }
+    .w10 {
+        width: 10%;
+    }
+    .w30 {
+        width: 30%;
+    }
+    .w50 {
+        width: 50%;
+    }
+    .w70 {
+        width: 70%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="left w70">
+    <h1>Profile for user {{ creator }}</h1>
+
+    <h2>Comments</h2>
+    <table>
+        <thead>
+            {% if creator == request.user.username %}
+            <th>
+                Private
+            </th>
+            {% endif %}
+            <th class="targets">
+                Targets
+            </th>
+            <th>
+                Body
+            </th>
+        </thead>
+        <tbody>
+            {% for annotation in annotations %}
+            <tr>
+                {% if creator == request.user.username %}
+                <td>
+                    {{ annotation.get_private_display }}
+                </td>
+                {% endif %}
+                <td>
+                    {% for t in annotation.target.all %}
+                    <a href="{{ t.url }}">{{ t.url }}</a> </br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {{ annotation.body|truncatewords:20 }}
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+
+    <h2>User's Replies</h2>
+    <table>
+        <thead>
+            {% if creator == request.user.username %}
+            <th>
+                Private
+            </th>
+            {% endif %}
+            <th class="targets">
+                Targets
+            </th>
+            <th>
+                Body
+            </th>
+        </thead>
+        <tbody>
+            {% for annotation in replies %}
+            <tr>
+                {% if creator == request.user.username %}
+                <td>
+                    {{ annotation.get_private_display }}
+                </td>
+                {% endif %}
+                <td>
+                    {% for t in annotation.target.all %}
+                    <a href="{{ t.url }}">{{ t.url }}</a> </br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {{ annotation.body|truncatewords:20 }}
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+<div class="right">
+    <ul>
+        {% for user in all_users %}
+        <li><a href="{{current_site}}{% url profile creator=user %}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+              
+{% endblock %}

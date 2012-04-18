@@ -1,0 +1,92 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "admin", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2012-01-16 05:42:08", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$70a2d$fdd0fc39ea2a3079e406e7639702bd373a87fe7d", 
+            "email": "admin@admin.com", 
+            "date_joined": "2011-08-01 09:45:13"
+        }
+    },
+    {
+        "pk": 1, 
+        "model": "api.profile", 
+        "fields": {
+            "drupal_uid": null 
+        }
+   },
+   {
+        "pk": 17, 
+        "model": "api.target", 
+        "fields": {
+            "url": "http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "api.target", 
+        "fields": {
+            "url": "http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc/5"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "api.target", 
+        "fields": {
+            "url": "http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc/4"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "api.target", 
+        "fields": {
+            "url": "http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc/3"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "api.target", 
+        "fields": {
+            "url": "http://dlib.nyu.edu/awdl/books/derportrtkopfd00borc/2"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "api.annotation", 
+        "fields": {
+            "body": "Annotation body", 
+            "target": [
+                17
+            ], 
+            "author": 1, 
+            "private": true, 
+            "creation_date": "2011-10-03 13:13:57", 
+            "modification_date": "2011-10-03 13:13:57", 
+            "type": "Comment"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "api.annotation", 
+        "fields": {
+            "body": "Annotation body", 
+            "target": [
+                21
+            ], 
+            "author": 1, 
+            "private": true, 
+            "creation_date": "2011-10-04 13:13:57", 
+            "modification_date": "2011-10-04 13:13:57", 
+            "type": "Comment"
+        }
+    }
+]

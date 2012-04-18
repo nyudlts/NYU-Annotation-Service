@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}NY University{% endblock %}
+
+{% block content %}
+        <div id="ins">
+          <p class="txb">
+          {% blocktrans with email as email %}We have send letter to your email {{ email }}<br />
+          there is a link which you should to follow<br />
+          to activate your account.<br />{% endblocktrans %} 
+          </p>
+        </div>
+{% endblock %}

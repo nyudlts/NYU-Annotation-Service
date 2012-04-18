@@ -1,0 +1,772 @@
+{% extends "base.html" %}
+{% block title %} OpenLayers: Code playground {% endblock %}
+{% block css %}
+{{ block.super }}
+	<link rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
+		<link rel="stylesheet" href="http://yui.yahooapis.com/3.4.0/build/cssbase/base-min.css" type="text/css">
+		<link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" type="text/css">
+
+
+        <style>
+            .olPopupCloseBox {
+                background: url({{ MEDIA_URL }}img/close.gif) no-repeat;
+                cursor: pointer;
+            }
+
+            .yellow {
+                background-color: yellow;
+            }
+            .green {
+                background-color: green;
+            }
+            .red {
+                background-color: #FA8072; 
+            }
+            .delete {
+                float: right;
+                font-size: 0.8em;
+            }
+            .edit {
+                float: right;
+                font-size: 0.8em;
+            }
+            .main {
+                margin: 0;
+            }
+            .w20 {
+                width: 20px;
+            }
+            .red-text {
+                font-color: red;
+            }
+        </style>
+
+
+{% endblock %}
+{% block js %}
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/OpenLayers-full.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/layers-book.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.json2xml.js"></script>
+        <script type="text/javascript">
+            var DLTS = {
+                deletedAnnotationText: "Annotation has been deleted",
+            };
+            {% if request.user.is_authenticated %}
+            DLTS.user = '{{ request.user.username }}';
+            {% else %}
+            DLTS.user = undefined;
+            {% endif %}
+
+            var AJAX_HEADERS = {
+                "X-Requested-With" : "XMLHttpRequest",
+                'Content-Type' : 'application/json',
+            }
+
+            function replyAnnotation(element) {
+                var target = element.id;
+                var coords = getQuerystring('coordinates', '', target);
+                $("input#coord").attr('value', coords);
+    			$("#dialog-form").dialog("open");
+            }
+            
+            function deleteAnnotation(element) {
+                /*
+                   By default this function close popup and delete region from the map.
+                 */
+                if (!DLTS.user) {
+                    $("#please_login").dialog("open");
+                    return false
+                }
+                var url = element.id.split(';')[0]
+                    id = parseInt(element.id.split(';')[1]);
+                var coords = getCoordinates(url).toString();
+                var req = OpenLayers.Request.issue({
+                        url: '/nginx/api/annotations/'+DLTS.user,
+                        method: 'DELETE',
+                        params: {
+                            target: url,
+                            id: id
+                            },
+                        callback: function() {
+                            var rootA = DLTS.annot_dict[coords];
+
+                            console.log(rootA);
+
+                            var deleteRegion = !Boolean((rootA.answers || new Array())['length']) && rootA.id == id,
+                                closePopup = true;
+                             
+                            if (rootA.id != id) { // it's not a comment! it's reply!
+                                if (rootA.answers != undefined && rootA.answers.length == 1 && rootA.deleted) {
+                                    // if this is a last reply for deleted annotation - destroy region
+                                    deleteRegion = true;
+                                } else {
+                                    deleteRegion = false;
+                                }
+                                // now we should to delete this reply from annot_dict[xx].answers
+                                for (var k in DLTS.annot_dict[coords].answers) {
+                                    if (DLTS.annot_dict[coords].answers[k].id == id) {
+                                        DLTS.annot_dict[coords].answers.pop(k);
+                                    }
+                                }
+                            }
+
+                            var region =  DLTS.page.layers[1].getFeaturesByAttribute('coords', coords)[0];
+                            if (deleteRegion) {
+                                region.destroy();
+                            } 
+                            
+                            if (rootA.id == id) {
+                                DLTS.annot_dict[coords].deleted = true;
+                                DLTS.annot_dict[coords].deleted_at = 'right now';
+                            }
+
+                            if (closePopup) {
+                                for ( i in DLTS.page.popups) {
+                                    if ( DLTS.page.popups[i].id === coords) {
+                                        DLTS.page.popups[i].destroy();
+                                    }
+                                }
+                            }
+                            // unselect feature
+                            var sf = new OpenLayers.Control.SelectFeature();
+                            sf.unselect(region);
+                        }
+                })
+            }
+
+            function buildTargetUri(imgURL) {
+                var reg = /.*\/(.*)_(\d+)\..*$/;
+                var res = reg.exec(imgURL);
+                var bookName = res[1];
+                var pageNum = res[2];
+                return 'http://dlib.nyu.edu/awdl/books/'+bookName+'/'+parseInt(pageNum, 10);
+            }
+   
+ 
+            function getQuerystring(key, default_, from_) {
+                if (default_ == null) default_=""; 
+                if (from_ == null) from = window.location.href;
+                key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+                var qs = regex.exec(from_);
+                if(qs == null)
+                    return default_;
+                else
+                    return qs[1];
+            }
+
+			function handlerRequest(request) {
+				if(window.console) {
+					console.log(request.responseText);
+                }
+				var geometry = new OpenLayers.Bounds.fromString($("input#coord").attr('value')).toGeometry();
+				var box = new OpenLayers.Feature.Vector(geometry, {coords: geometry.toString()});
+                var layer = DLTS.page.layers[1];
+                layer.addFeatures(box);
+                eval('DLTS.annot_dict[geometry.bounds.toArray()] = '+request.responseText); 
+			}
+
+            function requestToJSON(request) {
+				if(request.status === 200) {
+					return new OpenLayers.Format.JSON().read(request.responseText);
+				} else {
+					return [];
+				}
+            }
+
+            function getCoordinates(from, propertyName) {
+                if (propertyName) {
+                    from = from[propertyName];
+                }
+                var str_coord = getQuerystring('coordinates', undefined, from);
+                var coord = new Array();
+                if (str_coord) {
+                    var mas = str_coord.split(',');
+                    for ( var k in mas ) {
+                        if (isNaN(mas[k])) {
+                            return []
+                        }
+                        coord[k] = parseInt(mas[k]);
+                    }
+                }
+                return coord;
+            }
+
+            function getBoxesForTarget(target) {
+                var annotations = requestToJSON(OpenLayers.Request.issue({
+                    url : '/nginx{% url annotation_handler emitter_format='json'%}?targetUri='+target,
+                    async : false
+                }));
+
+                var boxes = new Array();
+
+                DLTS.annot_dict = new Object();
+                DLTS.annot_coord = {};
+
+                for(var i in annotations) {
+                    var coords = [];
+                    for( var j in annotations[i]['target']) {
+                        coords.push(getCoordinates(annotations[i]['target'][j], 'url'));
+                    }
+                    DLTS.annot_coord[coords[0]] = coords.slice(1);
+
+                    var coord = coords[0];
+//                    var coord = getCoordinates(annotations[i]['target']);
+                    if (coord) {
+                        if (annotations[i].type === 'Comment'){
+                            boxes.push(coord);
+                            DLTS.annot_dict[coord] = annotations[i];
+
+                            // find all answers for this comment
+                            for ( var j in annotations ) {
+                                var ann = annotations[j];
+                                if  (ann.type === 'Reply'){ // if this is not a comment but "Reply" 
+                                    for ( t in ann.target) {
+                                        if (areArraysEqual(coord, getCoordinates(ann['target'][t]['url']))) { 
+                                        // find out a comment which is the root for this reply
+                                        if (!DLTS.annot_dict[coord].answers) {
+                                            DLTS.annot_dict[coord].answers = new Array();
+                                        }
+                                        DLTS.annot_dict[coord].answers.push(ann);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (window.console) {
+                    console.log("Boxes ", boxes);
+                }
+                return boxes
+            }
+
+            function updateAnnotation(element) {
+                // This function just opens the dialog form and pass into it annotation data.
+                if (!DLTS.user) {
+                    $("#please_login").dialog("open");
+                    return false
+                }
+                var url = element.id.split(';')[0]
+                    id = parseInt(element.id.split(';')[1]);
+                var coords = getCoordinates(url).toString();
+                var annot = DLTS.annot_dict[coords];
+                console.log(annot);
+                $('#update-dialog-form #annotation_id').attr('value', annot.id);
+                $("#update-dialog-form textarea#annotation").attr('value', annot.body);
+                $("#update-dialog-form #private").attr('value', annot.private);
+                $("input#coord").attr('value', coords);
+                $("#update-dialog-form").dialog("open");
+                // saveAnnotation(dialog, {requestMethod: "PUT"});
+            }
+
+            function updateAnnotationReply(element) {
+                // This function just opens the dialog form and pass into it annotation data.
+                if (!DLTS.user) {
+                    $("#please_login").dialog("open");
+                    return false
+                }
+                var url = element.id.split(';')[0]
+                    id = parseInt(element.id.split(';')[1]);
+                var coords = getCoordinates(url).toString();
+                var annot = DLTS.annot_dict[coords];
+                // find out reply in the list of replies
+                var rep;
+                for (var r in annot.answers) {
+                    if (annot.answers[r].id == id) rep = annot.answers[r];
+                }
+                console.log(annot);
+                $('#update-dialog-form #annotation_id').attr('value', rep.id);
+                $("#update-dialog-form textarea#annotation").attr('value', rep.body);
+                $("#update-dialog-form #private").attr('value', rep.private);
+                $("input#coord").attr('value', coords);
+                $("#update-dialog-form").dialog("open");
+                // saveAnnotation(dialog, {requestMethod: "PUT"});
+            }
+
+            function saveAnnotation(dialog, params) {
+                var reg = /.*\/(.*)_(\d+)\..*$/;
+                var res = reg.exec(DLTS.page.layers[0].rft_id);
+                var bookName = res[1];
+                var pageNum = res[2];
+                var target = [{url: 'http://dlib.nyu.edu/awdl/books/'+bookName+'/'+parseInt(pageNum, 10)+'/?coordinates='+$("input#coord").attr('value')}];
+                var coords = getCoordinates(target[0], 'url').toString();
+                var requestType = "POST";
+                var type;
+                var annot = DLTS.annot_dict[coords];
+                var id = parseInt($('#update-dialog-form #annotation_id').attr('value'));
+
+                if (params != undefined && params.requestMethod != undefined) {
+                    requestType = params.requestMethod;
+                }
+
+                console.log(coords);
+                console.log(requestType);
+
+                if (requestType == 'POST') {
+                    type = Boolean(DLTS.page.layers[1].getFeaturesByAttribute('coords', coords).length) ? "Reply" : "Comment";
+                } else {
+                    if (annot.id != id) {
+                        type = "Reply";
+                        for (r in annot.answers) {
+                            if (annot.answers[r].id == id){
+                                annot = annot.answers[r];
+                            }
+                        }
+                    } else {
+                        type = annot.type;
+                    }
+                }
+
+                if ( type == "Reply" ) {
+                    target.push({url: window.location.origin + DLTS.annot_dict[coords].url});
+                }
+
+                var upSelSuf = "#update-dialog-form ", 
+                    createSelSuf = "#dialog-form " ,
+                    selectors = {
+                        bodyS: "textarea#annotation",
+                        privateS: "#private",
+                        idS: "#annotation_id"
+                    };
+
+                if (requestType == "PUT") {
+                    // update selectors
+                    for (sel in selectors) {
+                        selectors[sel] = upSelSuf + selectors[sel];
+                    }
+                } else {
+                     // update selectors
+                    for (sel in selectors) {
+                        selectors[sel] = createSelSuf + selectors[sel];
+                    }
+                }   
+
+                var annotation = {
+                    body: $(selectors['bodyS']).attr('value'),
+                    type: type,
+                    target: target,
+                    private: $(selectors['privateS']).attr('value'),
+                    id: $(selectors['idS']).attr('value'),
+                };
+
+                //NOTE: variable annot is a current edited annotation ()
+
+                $.ajax({
+                    url: "{{ current_site }}{% if request.user.is_authenticated %}{% url annotation_handler creator_id=request.user.id %}{% else %}100500{% endif %}",
+					type : requestType,
+					headers : AJAX_HEADERS,
+                    data : JSON.stringify({annotation: annotation}),
+                    complete: function(request) {
+                        if(window.console) {
+                            console.log(request.responseText);
+                        }
+                        eval("var response = "+request.responseText);
+                        var geometry = new OpenLayers.Bounds.fromString(coords).toGeometry();
+                        // add new feature or answer to the annotation.answers list
+                        if (requestType == 'POST') {
+                            if (type == 'Comment') { // Comment
+                                var box = new OpenLayers.Feature.Vector(geometry, {coords: coords.toString()});
+                                var layer = DLTS.page.layers[1];
+                                layer.addFeatures(box);
+                                DLTS.annot_dict[geometry.bounds.toArray()] = response; 
+                            } else { // Reply
+                                if ( !DLTS.annot_dict[coords].answers ) {
+                                    DLTS.annot_dict[coords].answers = new Array();
+                                }
+                                DLTS.annot_dict[coords].answers.push(response);
+                            }
+                        } else { // Just replace annotatoion in DLTS.annot_coord
+                            if (type == "Comment") {
+                                var answers = DLTS.annot_dict[coords].answers;
+                                DLTS.annot_dict[coords] = response;
+                                DLTS.annot_dict[coords].answers = answers;
+                            } else {
+                                DLTS.annot_dict[coords].answers[DLTS.annot_dict[coords].answers.indexOf(annot)]
+                                DLTS.annot_dict[coords].answers[DLTS.annot_dict[coords].answers.indexOf(annot)] = response;
+                            }
+                        }
+
+                        // destroy PopUps
+                        for ( var i in DLTS.page.popups) {
+                            DLTS.page.popups[i].destroy()
+                        }                            
+                        // unselect feature
+                        var sf = new OpenLayers.Control.SelectFeature();
+                        sf.unselect(DLTS.page.layers[1].getFeaturesByAttribute('coords', coords.toString())[0]);
+                        
+                        // clean annotation form
+                        $(selectors['bodyS']).attr('value', '');
+
+                    },
+                    // handlerRequest,
+                });
+
+			    $(dialog).dialog("close");
+			}
+
+            function cancelAnnon(dialog) {
+                $("#annotation").attr('value', '');
+				$(dialog).dialog("close");
+			}
+
+/**************************************************************************************
+
+    Start 
+
+ **************************************************************************************/
+
+            function initPage(imageURL) {
+				var container = 'map1';
+				// required
+                var server = 'http://dev-dl-pa.home.nyu.edu'; // required
+				// imageURL = 'http://dev-dl-pa.home.nyu.edu/awdl/sites/dlib.nyu.edu.awdl/files/dieplastikderg00fech/dieplastikderg00fech_0011.jp2', // required
+                var metadata = server + '/adore-djatoka/resolver?url_ver=Z39.88-2004&rft_id=' + imageURL + '&svc_id=info:lanl-repo/svc/getMetadata'; // required
+                /*
+                   Here we should to parse target URI and get coordinates from it
+                 */
+                var t = buildTargetUri(imageURL);
+                var boxes = getBoxesForTarget(t); 
+                // [getQuerystring('coordinates', '').split(',')];
+                /*requestToJSON(OpenLayers.Request.issue({
+					url : 'assests/db/select/index.php',
+					async : false
+				}));*/
+
+				var params = {
+					zoom : 1,
+					metadata : metadata,
+					service : server,
+					boxes : boxes
+                };
+                $("#update-dialog-form").dialog({
+                    autoOpen : false,
+					height : 300,
+					width : 350,
+					modal : true,
+					buttons : {
+						"Save" : function() {
+                        saveAnnotation(this, {requestMethod: "PUT"});
+						},
+						Cancel : function() {
+							cancelAnnon(this);
+						}
+					},
+					close : function() {
+					}
+                });
+
+                $("#dialog-form").dialog({
+                    autoOpen : false,
+					height : 300,
+					width : 350,
+					modal : true,
+					buttons : {
+						"Save" : function() {
+                        saveAnnotation(this, {requestMethod: "POST"});
+						},
+						Cancel : function() {
+							cancelAnnon(this);
+						}
+					},
+					close : function() {
+					}
+                });
+                    
+                $("#please_login").dialog({
+                    autoOpen : false,
+					height : 300,
+					width : 350,
+					modal : true,
+					buttons : {
+                        "Go To Login Page" : function() {
+                            window.location.href = "{% url auth_login %}";
+						},
+					},
+					close : function() {
+					}
+                });
+ 
+
+				jQuery.extend(DLTS, {
+					"page" : new Page(container, imageURL, params)
+				});
+
+				/*
+				 * http://dev.openlayers.org/docs/files/OpenLayers/Control-js.html
+				 * Usually controls are not created in exactly this manner.
+				 */
+
+				var cControl = new OpenLayers.Control();
+
+                OpenLayers.Util.extend(cControl, {
+                    
+				draw : function() {
+						/*
+						 * This Handler.Box will intercept the shift-mousedown before Control.MouseDefault gets to see it
+						 */
+
+						this.box = new OpenLayers.Handler.Box(cControl, {
+							"done" : this.notice
+						}, {
+							keyMask : OpenLayers.Handler.MOD_SHIFT
+						});
+						this.box.activate();
+					},
+					notice : function(bounds) {
+						var ll = DLTS.page.getLonLatFromPixel(new OpenLayers.Pixel(bounds.left, bounds.bottom));
+						var ur = DLTS.page.getLonLatFromPixel(new OpenLayers.Pixel(bounds.right, bounds.top));
+
+						/*
+						 * Handler
+                         */
+
+                        if (!DLTS.user) {
+                            $("#please_login").dialog("open");
+                        } else {
+                            $("input#coord").attr('value', ll.lon.toFixed(4) + ',' + ll.lat.toFixed(4) + ',' + ur.lon.toFixed(4) + ',' + ur.lat.toFixed(4));
+                            $("#dialog-form").dialog("open");
+                        }
+                    }
+                });
+
+                var onSelect = new OpenLayers.Control.SelectFeature(
+                        DLTS.page.layers[1],
+                        {
+                            onSelect: function(feature) {
+                                DLTS.coords = feature.geometry.bounds.toArray();
+                                var annotation = DLTS.annot_dict[feature.geometry.bounds.toArray()];
+                                DLTS.lonlat = OpenLayers.LonLat.fromArray(feature.geometry.bounds.toArray());
+
+                                function build_html(annotation) {
+                                    var color = annotation.deleted?"red":"yellow";
+                                    var base = '<table><tr rowspan=2 class="'+color+'"><td><a href="{{ current_site }}{% url profile %}'+annotation.creator.username+'">'+annotation.creator.username+'</a>';
+                                    base+='<br /><nobr>@Created at '+annotation.created_at+'</nobr>';
+                                    if (annotation.was_changed) base+='<br /><nobr>@Changed at '+annotation.modified_at+'</nobr>';
+                                    if (annotation.deleted) {
+                                        base+='<br /><nobr>@Deleted at ' + annotation.deleted_at+'</nobr></td><td width="100px">'+DLTS.deletedAnnotationText;
+                                    } else {
+                                        base+='</td><td width="100px">'+annotation.body;
+                                    }
+                                    if (annotation.creator.username === DLTS.user && !annotation.deleted) {
+                                        base += "<br /><a class='delete' onclick='deleteAnnotation(this)' id='"+annotation.target[0]['url']+";"+annotation.id+"'>DELETE</a>";
+                                        base += "<br /><a class='edit' onclick='updateAnnotation(this)' id='"+annotation.target[0]['url']+";"+annotation.id+"'>EDIT</a>";
+
+                                    }
+                                    if (annotation.private == 0 ) {
+                                        base += "<td class='green red-text w20'>Private</td>";
+                                    }
+                                    base += '</td></tr>';
+                                    
+                                    if (annotation.answers != undefined && annotation.answers.length) {
+                                        for (i in annotation.answers) {
+                                            var rep = annotation.answers[i];
+                                            base += '<tr><td><a href="{{ current_site }}{% url profile %}'+rep.creator.username+'">'+rep.creator.username+'</a>';
+                                            base+= '<br /><nobr>@Created at '+rep.created_at+'</nobr>';
+                                            if (rep.was_changed) base+='<br /><nobr>@Changed at '+rep.modified_at+'</nobr>';
+                                            base+='</td><td width="100px">'+rep.body;
+                                            if ( DLTS.user == rep.creator.username ) {
+                                                base += "<div style='text-align: right;'><a class='delete' onclick='deleteAnnotation(this)' id='";                                           
+                                                base += annotation.answers[i].target[0]['url']+";"+annotation.answers[i].id+"'>DELETE</a>";
+                                                base += "<br /><a class='edit' onclick='updateAnnotationReply(this)' id='"+annotation.target[0]['url']+";"+rep.id+"'>EDIT</a></div></td>";
+                                            }
+                                            if (rep.private == 0) {
+                                                base += "<td class='green red-text w20'>Private</td>";
+                                            }
+                                            base+= "</tr>";
+                                        }
+                                    }
+                                    base += '</table>';
+                                    if (DLTS.user) {
+                                        base += "<a onclick='replyAnnotation(this)' id='"+annotation.target[0]['url']+"'>Reply"+"</a>";
+                                    }
+                                    return base
+                                }                             
+
+
+                                var pop = new OpenLayers.Popup.FramedCloud(
+                                    DLTS.coords.toString(), 
+                                    DLTS.lonlat,
+                                    null,
+                                    build_html(annotation),
+                                    null,
+                                    true
+                                    );
+                                pop.imageSrc = '{{ MEDIA_URL }}img/cloud-popup-relative.png';
+                                DLTS.page.addPopup(pop);
+
+                                if(window.console) {
+                                   console.log('ON SELECT', this, feature) 
+                                }
+                            },
+                            onUnselect: function(feature) {
+                                var coords = feature.geometry.bounds.toArray().toString();
+                                console.log(coords);
+                                for(var i in DLTS.page.popups) {
+                                    if (DLTS.page.popups[i].id === coords) {
+                                        DLTS.page.popups[i].destroy();
+                                    }
+                                }
+                            },
+                            toggleKey: "ctrlKey", // ctrl key removes from selection
+                            box: false
+                        } 
+                );
+                
+                DLTS.page.addControl(onSelect);
+                onSelect.activate();
+                
+                DLTS.page.addControl(cControl);
+
+				if(window.console) {
+					console.log(DLTS);
+                }
+            }
+
+        $(document).ready(function() {
+                initPage('http://dev-dl-pa.home.nyu.edu/awdl/sites/dlib.nyu.edu.awdl/files/dieplastikderg00fech/dieplastikderg00fech_0011.jp2');
+        });
+
+        function areArraysEqual(array1, array2) {
+           var temp = new Array();
+           if ( (!array1[0]) || (!array2[0]) ) { // If either is not an array
+              return false;
+           }
+           if (array1.length != array2.length) {
+              return false;
+           }
+           // Put all the elements from array1 into a "tagged" array
+           for (var i=0; i<array1.length; i++) {
+              key = (typeof array1[i]) + "~" + array1[i];
+           // Use "typeof" so a number 1 isn't equal to a string "1".
+              if (temp[key]) { temp[key]++; } else { temp[key] = 1; }
+           // temp[key] = # of occurrences of the value (so an element could appear multiple times)
+           }
+           // Go through array2 - if same tag missing in "tagged" array, not equal
+           for (var i=0; i<array2.length; i++) {
+              key = (typeof array2[i]) + "~" + array2[i];
+              if (temp[key]) {
+                 if (temp[key] == 0) { return false; } else { temp[key]--; }
+              // Subtract to keep track of # of appearances in array2
+              } else { // Key didn't appear in array1, arrays are not equal.
+                 return false;
+              }
+           }
+           // If we get to this point, then every generated key in array1 showed up the exact same
+           // number of times in array2, so the arrays are equal.
+           return true;
+        }
+
+    </script>
+
+    {% endblock %}
+    {% block content %}
+		<div id="doc4" class="yui-t2">
+			<div id="hd">
+				<h1 class="title">OpenLayers Examples: Annotations</h1>
+			</div>
+			<div id="bd">
+				<div id="yui-main">
+					<div class="yui-b">
+						<div class="yui-g">
+							<div id="map1"></div>
+							<p>
+								The control allows you to draw a rectangle, that store its coordinates after creation in a database. Hold down the shift key on your keyboard and draw a rectangle with the mouse. After drawning a rectangle reload the page to see the last 3 selections.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="yui-b" id="nav">
+					<p class="home">
+					</p>
+                    <ul> <!--
+                        <li>
+                        <a href="{{ current_site }}{% url auth_login %}">Login</a>
+                        </li>
+                        <li>
+                        <a href="{{ current_site }}{% url admin:index %}">Admin</a>
+                        </li>
+
+						<li>
+                        <a href="{{ current_site }}{% url profile %}">Your profile</a>
+                        </li> -->
+                        <!---
+						<li>
+							<a href="./orc.bbox.html?query=Socialists,Should,Join,THE,TRUTH,9">Drawning boxes from ORC Tesseract output</a>
+						</li>
+						<li>
+							<a href="./openurl.annon.html">Drawn a rectangle and save the regions in a database</a>
+                            </li>
+                            --->
+					</ul>
+				</div>
+			</div>
+			<div id="ft">
+				<p>
+					<a href="http://dlib.nyu.edu/dlts/">NYU Digital Library Technology Services</a>
+				</p>
+			</div>
+        </div>
+
+        <!-- Create  annotation dialog -->
+		<div id="dynamic">
+			<div id="dialog-form" title="Create new annotation">
+				<p class="validateTips">
+					Create annotation or reply.
+				</p>
+                <form>
+                    <fieldset>
+                            <label for="annotation">Annotation</label>
+                            <textarea name="annotation" id="annotation" class="text ui-widget-content ui-corner-all"></textarea>
+                            <input name="coord" id="coord" type="hidden" value="" />
+                    </fieldset>
+                    <fieldset>
+                        <label for='private'>Access</label>
+                        <select name='private' id="private">
+                            <option value="1">Public</option>
+                            <option value="0">Private</option>
+                        </select>
+                        <input type="hidden" value="" id="annotation_id" name="annotation_id"/>
+                    </fieldset> 
+				</form>
+			</div>
+        </div>
+
+        <!-- Update annotation dialog -->
+		<div id="dynamic">
+			<div id="update-dialog-form" title="Update annotation">
+				<p class="validateTips">
+					Update annotation.
+				</p>
+                <form>
+                    <fieldset>
+                            <label for="annotation">Annotation</label>
+                            <textarea name="annotation" id="annotation" class="text ui-widget-content ui-corner-all"></textarea>
+                            <input name="coord" id="coord" type="hidden" value="" />
+                    </fieldset>
+                    <fieldset>
+                        <label for='private'>Access</label>
+                        <select name='private' id="private">
+                            <option value="1">Public</option>
+                            <option value="0">Private</option>
+                        </select>
+                        <input type="hidden" value="" id="annotation_id" name="annotation_id"/>
+                    </fieldset> 
+				</form>
+			</div>
+        </div>
+
+        <!-- Please login dialog -->
+        <div id="please_login" title="Please login">
+            <p class="ValidateTips">
+            You should be logged in to create annotations.
+            </p>
+            You can login <a href="{{ current_site }}{% url auth_login %}">here</a>
+        </div>
+
+
+
+        {% endblock %}

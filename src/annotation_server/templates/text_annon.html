@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{#% load coffeescript %#}
+{% load webdesign %}
+
+{% block title %}
+Annotate text test page
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
+<!--<script src="{{ MEDIA_URL }}{#% coffeescript "coffee/text_annon.coffee" %#}" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="{{ MEDIA_URL }}{#% coffeescript "coffee/marklet.coffee" %#}" type="text/javascript" charset="utf-8"></script>-->
+
+<script src='{{ MEDIA_URL }}annotator/lib/vendor/jquery.js'></script>
+<script src='{{ MEDIA_URL }}annotator/lib/vendor/json2.js'></script>
+
+<script src="{{ MEDIA_URL }}annotator/lib/extensions.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/console.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/class.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/range.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/annotator.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/widget.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/editor.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/viewer.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/notification.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/plugin/store.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/plugin/permissions.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/plugin/auth.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/plugin/tags.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/plugin/unsupported.js"></script>
+<script src="{{ MEDIA_URL }}annotator/lib/plugin/filter.js"></script>
+
+
+<!--- <script src='{{ MEDIA_URL }}js/annotator-full/annotator-full.min.js'></script> -->
+
+{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href='{{ MEDIA_URL }}js/annotator-full/annotator.min.css'>
+{% endblock %}
+
+{% block content %}
+
+<!--<input type="text" name="path" value="" id="path">-->
+<!--<input type="button" name="load" value="Load" id="load">-->
+<!--<input type="button" name="some_name" value="Annot" id="annot">-->
+<div id="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Labore deleniti minus, veritatis vel unde ipsam maiores assumenda explicabo inventore possimus velit aperiam dignissimos, voluptatem facilis 
+    vel nam dolores magnam temporibus tempora repudiandae distinctio voluptas minus. Voluptatum explicabo ullam dicta earum vero
+    dolore quae, provident ratione debitis odit praesentium quos architecto impedit magnam iste, fugiat quaerat minima dignissimos culpa
+    beatae deserunt eaque, voluptates molestiae nostrum expedita excepturi natus nesciunt provident incidunt omnis? Odio ab nisi deserunt
+    ullam ipsa sequi impedit omnis dignissimos quas, soluta sapiente tempora, dicta autem ea facere amet, magni similique veniam esse
+    eligendi suscipit.</p>
+    <p>Adipisci repellendus totam? Fugiat voluptate nesciunt pariatur blanditiis enim laborum rem sed commodi rerum, voluptate ipsum
+    architecto temporibus voluptas, aliquam blanditiis placeat, vel voluptate corrupti voluptatum impedit amet illo repudiandae?
+    Placeat tempora error nemo ducimus, vel voluptate possimus accusantium error, unde quibusdam voluptatibus dolorum dolore,
+    ipsam officia blanditiis incidunt quidem nisi est, natus unde veniam aspernatur.</p>
+    <p>Nam earum incidunt laudantium sapiente aliquid ad illo, sint vitae quidem molestias rem nobis debitis esse? Natus 
+    eum alias fuga provident eaque, nesciunt illum odit aliquam totam consequatur et eligendi vero veritatis unde sapiente. 
+    Molestias expedita quaerat facere minima sequi, blanditiis hic facilis mollitia, hic quasi architecto illo ab placeat ad 
+    rem neque sequi id? Fugit sit delectus architecto, molestiae voluptatibus sit harum dolorem fugit commodi, accusamus 
+    distinctio consequatur.</p>
+    <p>Facere nisi maiores voluptatem, saepe a delectus sint unde corporis dolores magni repellendus, fugit culpa nesciunt, 
+    rem accusantium beatae repudiandae vel id, quidem rerum minus voluptate distinctio error necessitatibus dolorum non sunt. 
+    Tempora iste deleniti molestiae magnam distinctio voluptates quod error aspernatur?</p>
+</div>
+
+<script>
+    var annotator = $('body').annotator().data('annotator')
+//    .setupPlugins({
+//        userId:    '{{ request.user.id }}',
+//        userName:  '{{ request.user.username }}',
+//        accountId: '{{ request.user.id }}',
+//        authToken: '{{ request.session.session_key }}',
+// 'an-even-longer-auth-token'
+//    });
+    .addPlugin('Permissions', {
+        userId:    '{{ request.user.id }}',
+        userName:  '{{ request.user.username }}',
+        accountId: '{{ request.user.id }}',
+        authToken: '{{ request.session.session_key }}',       
+        user:      '{{ request.user.username }}',
+        showEditPermissionsCheckbox: false,
+    }).addPlugin('Store', {
+        prefix: '{{ current_site }}/api',
+        urls: {
+            // These are the default URLs.
+            create:  '/annotations',
+            read:    '/annotations/:id',
+            update:  '/annotations/:id',
+            destroy: '/annotations/{{ request.user.id }}?id=:id',
+            search:  '/annotations'
+        },
+        annotationData: {
+            target: [{url: window.location.href}],
+            private: 0,
+            type: 'Comment'
+        },   
+        loadFromSearch: {
+            'limit': 50,
+            'targetUri': window.location.href
+        }
+    });
+
+</script>
+
+
+{% endblock %}

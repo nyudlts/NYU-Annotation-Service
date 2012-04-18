@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div id="ins">
+        {% blocktrans %}Your account has been activated! Please login now <a href={{ current_site }}{% url auth_login %}
+    </div>
+
+{% endblock %}

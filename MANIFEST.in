@@ -1,0 +1,13 @@
+include README.txt  pip_req.txt 
+# fabfile.py
+include src/annotation_server/check_installation.py
+include src/annotation_server/annotation_service.sh
+include src/annotation_server/update_service.py
+
+
+recursive-include src/annotation_server/api/ *
+recursive-include src/annotation_server/profile/ *
+recursive-include src/annotation_server/media/ *
+recursive-include src/annotation_server/templates/ *
+
+exclude src/annotation_server/local_settings.py

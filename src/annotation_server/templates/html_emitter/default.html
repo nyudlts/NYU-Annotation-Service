@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1 align="center">Annotations</h1>
+        <table border=3 align="center" cellpadding="5px">
+            <thead>
+                <th color="blue">
+                    Creator
+                </th>
+                <th>
+                    Target
+                </th>
+                <th>
+                    Body
+                </th>
+                <th>
+                    Type
+                </th>
+            </thead>
+            {% for obj in data %}
+            <tr>
+                <td>
+                    {{ obj.creator.username }}
+                </td>
+                <td>
+                    {% for t in obj.target.all %}
+                    {{ t }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    {#{ obj.target }#}
+                </td>
+                <td>
+                    {{ obj.body }}
+                </td>
+                <td>                    
+                    {{ obj.type }}
+                </td>           
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
+
+
+

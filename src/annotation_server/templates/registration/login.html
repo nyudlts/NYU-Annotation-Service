@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class='login_form'>
+    <h1>Login</h1>
+    <form action='.' method="POST" class="login_form">
+    <table>
+            {{ form.as_table }}
+    </table>
+    {% csrf_token %}
+    <input type='submit'>
+    </form>
+
+</div>
+{% endblock %}
