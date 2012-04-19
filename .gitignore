@@ -1,0 +1,9 @@
+.settings
+.project
+.pydevproject
+*.pyc
+.tmp_*
+.svn
+.idea*
+.hg
+local_settings.py
