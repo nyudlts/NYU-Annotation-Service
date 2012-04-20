@@ -35,17 +35,48 @@ class Updater(BaseCommand):
                     help='Need logging?')
     )
 
-    def check_repo_type(self):
-        repos = {
+    '''
+    If you want to addd ability of working this script with other type of repository
+    you should:
+        1) add {"folder name": "repository name"} to the variable repos.
+        NOTE: repo name is a part of function name.
+        Follow this template please to correct name of function: checkout_{repo_name}
+            for exmple:
+                repos = {
+                     '.bazzar': 'bzr'
+                     '.svn': 'svn',
+                     '.git': 'git',
+                     '.hg': 'hg',
+                     }
+        2) add method to this class named "checkout_bzr"
+            def checkout_bzr(self):
+                return 'bzr', 'update'
+        That's all
+
+    '''
+    repos = {
             '.svn': 'svn',
             '.git': 'git',
             '.hg': 'hg',
         }
+    def check_repo_type(self):
         for path, dirs, files in os.walk(self.repo_path):
-            exist_repos = [r for r in repos if r in dirs]
+            exist_repos = [r for r in self.repos if r in dirs]
             if len(exist_repos) > 1:
-                raise Exception("Select only one repository type")
-            return repos[exist_repos[0]]
+                checked = False
+                while not checked:
+                    print "Select type of repo where from to update:\n"
+                    for i, rep in enumerate(exist_repos):
+                        print "{0}: {1}".format(i, self.repos[rep])
+                    try:
+                        repo_type = int(raw_input())
+                        checked = True
+                    except ValueError as e:
+                        print "Incorrect value! Please input one of the provided values."
+                return self.repos[exist_repos[repo_type]]
+
+                #raise Exception("Select only one repository type")
+            return self.repos[exist_repos[0]]
 
     def checkout(self):
         repo_type = self.check_repo_type()
@@ -140,7 +171,7 @@ class Updater(BaseCommand):
 
 
     def checkout_git(self):
-        return 'git', 'up'
+        return 'git', 'pull'
 
     def migrate_project(self):
         if self._is_installed:
