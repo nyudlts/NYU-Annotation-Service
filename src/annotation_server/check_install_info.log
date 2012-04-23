@@ -19508,3 +19508,963 @@ Destroying test database for alias 'default'...
  Result:
  
 2012-04-18 17:42:43,375 - check_installationINFO - INFO - Command python /home/user/work/nyu/src/annotation_server/manage.py test was success.
+2012-04-19 17:01:52,731 - /home/user/work/nyu/src/annotation_server/check_installationINFO - INFO - running install
+running bdist_egg
+running egg_info
+writing requirements to src/annotation_server.egg-info/requires.txt
+writing src/annotation_server.egg-info/PKG-INFO
+writing top-level names to src/annotation_server.egg-info/top_level.txt
+writing dependency_links to src/annotation_server.egg-info/dependency_links.txt
+writing requirements to src/annotation_server.egg-info/requires.txt
+writing src/annotation_server.egg-info/PKG-INFO
+writing top-level names to src/annotation_server.egg-info/top_level.txt
+writing dependency_links to src/annotation_server.egg-info/dependency_links.txt
+reading manifest file 'src/annotation_server.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src/annotation_server.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+running build_py
+copying src/annotation_server/update_service.py -> build/lib.linux-x86_64-2.7/annotation_server
+creating build/bdist.linux-x86_64/egg
+creating build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/local_settings.py -> build/bdist.linux-x86_64/egg/annotation_server
+creating build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/urls.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/auth_backends.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/tests.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/admin.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/auth_backends.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/xml2dict.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/forms.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/models.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/admin.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/views.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/utils.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/emiters.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/emiters.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/xml2dict.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/forms.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/models.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/middleware.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/tests.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/urls.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/__init__.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/middleware.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/handlers.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/utils.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+creating build/bdist.linux-x86_64/egg/annotation_server/api/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/api/fixtures/initial_data.json -> build/bdist.linux-x86_64/egg/annotation_server/api/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/api/fixtures/test_data.json -> build/bdist.linux-x86_64/egg/annotation_server/api/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/api/handlers.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+creating build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0005_auto__del_field_annotation_coordinates.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0007_auto__del_book__add_target__del_field_annotation_target.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0017_auto__add_field_profile_drupal_id.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0007_auto__del_book__add_target__del_field_annotation_target.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0006_auto__del_unique_annotation_target.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0002_auto__add_book__add_profile__add_annotation.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_rename_author_to_creator.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0001_initial.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0016_rename_author_to_creator.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0011_auto__del_field_constraint_type__del_field_constraint_blob__add_field_.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0004_auto__add_field_annotation_coordinates.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0016_rename_author_to_creator.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0015_rename_creator_to_author.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0008_auto__add_constraint.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0013_retyping_field_private.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0002_auto__add_book__add_profile__add_annotation.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0012_auto__add_field_constraint_annotation.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0001_initial.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0017_auto__add_field_profile_drupal_id.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_auto__chg_field_profile_user_ptr.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0020_auto__del_unique_profile_drupal_uid.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0010_auto__add_field_annotation_has_answers.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_rename_creator_to_author.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0011_auto__del_field_constraint_type__del_field_constraint_blob__add_field_.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0013_retyping_field_private.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0003_auto__add_field_annotation_private.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0006_auto__del_unique_annotation_target.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0020_auto__del_unique_profile_drupal_uid.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0019_auto__add_field_profile_drupal_uid__chg_field_annotation_author.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0010_auto__add_field_annotation_has_answers.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0015_rename_creator_to_author.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0019_auto__add_field_profile_drupal_uid__chg_field_annotation_author.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0005_auto__del_field_annotation_coordinates.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0012_auto__add_field_constraint_annotation.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0014_rename_fields__created_at__modified_at.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0014_rename_fields__created_at__modified_at.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/__init__.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_rename_creator_to_author.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0003_auto__add_field_annotation_private.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0004_auto__add_field_annotation_coordinates.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0008_auto__add_constraint.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0009_auto__del_field_annotation_creation_date__add_field_annotation_created.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0009_auto__del_field_annotation_creation_date__add_field_annotation_created.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+creating build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/text_annon.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/documentation.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/piston
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/piston/authorize_token.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/piston
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/test.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/main.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/profile/does_not_exists.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/profile/profile.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/profile
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/html_emitter
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/html_emitter/default.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/html_emitter
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/openurl.annon.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/base.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activate.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/registration_closed.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/registration_complete.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_change_done.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/registration_form.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_change_form.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/logout.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_form.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activation_email_subject.txt -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activation_email.txt -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_done.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_confirm.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_complete.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activation_complete.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/logged_out.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_email.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/login.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/annotation_service.sh -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/annotation_service.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/update_service.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/check_installation.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/urls.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/manage.py -> build/bdist.linux-x86_64/egg/annotation_server
+creating build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/urls.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/tests.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/models.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/views.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/models.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/views.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/tests.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/urls.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/__init__.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/context_processors.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/context_processors.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/helpers.py -> build/bdist.linux-x86_64/egg/annotation_server
+creating build/bdist.linux-x86_64/egg/annotation_server/media
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/Cakefile -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/range.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/annotator.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/annotator.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/widget.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/class.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/notification.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/auth.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/unsupported.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/permissions.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/store.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/tags.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/markdown.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/kitchensink.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/filter.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/viewer.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/editor.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/console.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/extensions.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/annotator.pot -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/l10n-update -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/l10n-new -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale/ru
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/ru/annotator.po -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale/ru
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/LICENSE -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/demo.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.store.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.markdown.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.auth.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.min.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.tags.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.permissions.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.unsupported.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.filter.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/dev.xhtml -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/src/bookmarklet.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/config.example.json -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/pkg/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/template.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/README.markdown -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/test/template.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/test/spec/bookmarklet.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/test/runner.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/LICENSE-MIT -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/README.markdown -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/example/openshakespeare/openshakespeare.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/example/openshakespeare/openshakespeare.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/example/openshakespeare/index.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/annotator.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/widget.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/extensions.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/json2.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/MIT.LICENSE -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/jasmine.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/jasmine-html.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/jasmine.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/showdown.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-jquery.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jquery.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/coffee-script.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/gettext.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/xpath.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/class.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/store.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/tags.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/markdown.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/unsupported.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/auth.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/permissions.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/kitchensink.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/filter.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/viewer.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/notification.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/editor.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/range.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/console.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/accept.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/edit.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/annotator-icon-sprite.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/note.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/mini_tag.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/delete.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/cancel.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/annotator-glyph-sprite.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/mini_person.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/css/annotator.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/LICENSE-GPL -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/dev.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/tools
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/tools/make_release.sh -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/tools
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec_helper.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/ajax_fixtures.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/lib/sandbox.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/lib/jasmine.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/lib/specutil.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/range_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/widget_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/notification_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/kitchensink_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/markdown_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/auth_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/tags_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/filter_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/permissions_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/store_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/editor_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/viewer_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/annotator_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/extensions_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/class_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/console_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/runner.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/runner.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/textnodes.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/delegator.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/range.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/xpath.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/ajax
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/ajax/store.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/ajax
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/markup.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/package.json -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/img/cloud-popup-relative.png -> build/bdist.linux-x86_64/egg/annotation_server/media/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/img/close.gif -> build/bdist.linux-x86_64/egg/annotation_server/media/img
+creating build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/layers-book.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/extend.jquery.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/json2xml.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/jquery.json2xml.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/OpenLayers.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/OpenLayers-full.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+creating build/bdist.linux-x86_64/egg/annotation_server/media/js/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/img/blank.gif -> build/bdist.linux-x86_64/egg/annotation_server/media/js/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/OpenLayers-books.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+creating build/bdist.linux-x86_64/egg/annotation_server/media/js/annotator-full
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/annotator-full/annotator-full.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js/annotator-full
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/annotator-full/annotator.min.css -> build/bdist.linux-x86_64/egg/annotation_server/media/js/annotator-full
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/jquery.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+creating build/bdist.linux-x86_64/egg/annotation_server/media/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/css/style.css -> build/bdist.linux-x86_64/egg/annotation_server/media/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/css/site.css -> build/bdist.linux-x86_64/egg/annotation_server/media/css
+copying build/lib.linux-x86_64-2.7/annotation_server/settings.py -> build/bdist.linux-x86_64/egg/annotation_server
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/local_settings.py to local_settings.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/api/views.py to views.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/annotation_service.py to annotation_service.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/update_service.py to update_service.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/check_installation.py to check_installation.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/urls.py to urls.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/manage.py to manage.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/helpers.py to helpers.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/settings.py to settings.pyc
+creating build/bdist.linux-x86_64/egg/EGG-INFO
+installing scripts to build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+running install_scripts
+running build_scripts
+copying and adjusting src/annotation_server/update_service.py -> build/scripts-2.7
+creating build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+copying build/scripts-2.7/annotation_service.sh -> build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+copying build/scripts-2.7/update_service.py -> build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+copying build/scripts-2.7/check_installation.py -> build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+changing mode of build/bdist.linux-x86_64/egg/EGG-INFO/scripts/annotation_service.sh to 755
+changing mode of build/bdist.linux-x86_64/egg/EGG-INFO/scripts/update_service.py to 775
+changing mode of build/bdist.linux-x86_64/egg/EGG-INFO/scripts/check_installation.py to 775
+copying src/annotation_server.egg-info/PKG-INFO -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/SOURCES.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/dependency_links.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/requires.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/top_level.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+creating 'dist/annotation_server-0.1a-py2.7.egg' and adding 'build/bdist.linux-x86_64/egg' to it
+removing 'build/bdist.linux-x86_64/egg' (and everything under it)
+Processing annotation_server-0.1a-py2.7.egg
+creating /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/annotation_server-0.1a-py2.7.egg
+Extracting annotation_server-0.1a-py2.7.egg to /home/user/.virtualenvs/ttt/lib/python2.7/site-packages
+Adding annotation-server 0.1a to easy-install.pth file
+Installing annotation_service.sh script to /home/user/.virtualenvs/ttt/bin
+Installing update_service.py script to /home/user/.virtualenvs/ttt/bin
+Installing check_installation.py script to /home/user/.virtualenvs/ttt/bin
+
+Installed /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/annotation_server-0.1a-py2.7.egg
+Processing dependencies for annotation-server==0.1a
+Searching for django-extensions==0.8
+Best match: django-extensions 0.8
+Processing django_extensions-0.8-py2.7.egg
+django-extensions 0.8 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_extensions-0.8-py2.7.egg
+Searching for flup==1.0.3.dev-20110405
+Best match: flup 1.0.3.dev-20110405
+Processing flup-1.0.3.dev_20110405-py2.7.egg
+flup 1.0.3.dev-20110405 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/flup-1.0.3.dev_20110405-py2.7.egg
+Searching for South==0.7.3
+Best match: South 0.7.3
+Processing South-0.7.3-py2.7.egg
+South 0.7.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/South-0.7.3-py2.7.egg
+Searching for BeautifulSoup==3.2.0
+Best match: BeautifulSoup 3.2.0
+BeautifulSoup 3.2.0 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages
+Searching for simplejson==2.1.2
+Best match: simplejson 2.1.2
+Processing simplejson-2.1.2-py2.7-linux-x86_64.egg
+Removing simplejson 2.1.6 from easy-install.pth file
+simplejson 2.1.2 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/simplejson-2.1.2-py2.7-linux-x86_64.egg
+Searching for piston-mini-client==0.3
+Best match: piston-mini-client 0.3
+Processing piston_mini_client-0.3-py2.7.egg
+Removing piston-mini-client 0.6 from easy-install.pth file
+piston-mini-client 0.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/piston_mini_client-0.3-py2.7.egg
+Searching for nose==1.1.2
+Best match: nose 1.1.2
+Processing nose-1.1.2-py2.7.egg
+nose 1.1.2 is already the active version in easy-install.pth
+Installing nosetests script to /home/user/.virtualenvs/ttt/bin
+Installing nosetests-2.7 script to /home/user/.virtualenvs/ttt/bin
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/nose-1.1.2-py2.7.egg
+Searching for mercurial==1.7.5
+Best match: mercurial 1.7.5
+Processing mercurial-1.7.5-py2.7-linux-x86_64.egg
+Removing mercurial 1.9.1 from easy-install.pth file
+mercurial 1.7.5 is already the active version in easy-install.pth
+Installing hg script to /home/user/.virtualenvs/ttt/bin
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/mercurial-1.7.5-py2.7-linux-x86_64.egg
+Searching for django-registration==0.7
+Best match: django-registration 0.7
+Processing django_registration-0.7-py2.7.egg
+django-registration 0.7 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_registration-0.7-py2.7.egg
+Searching for django-piston==0.2.3
+Best match: django-piston 0.2.3
+Processing django_piston-0.2.3-py2.7.egg
+django-piston 0.2.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_piston-0.2.3-py2.7.egg
+Searching for django-nose==0.1.3
+Best match: django-nose 0.1.3
+Processing django_nose-0.1.3-py2.7.egg
+django-nose 0.1.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_nose-0.1.3-py2.7.egg
+Searching for django-debug-toolbar==0.9.4
+Best match: django-debug-toolbar 0.9.4
+Processing django_debug_toolbar-0.9.4-py2.7.egg
+django-debug-toolbar 0.9.4 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_debug_toolbar-0.9.4-py2.7.egg
+Searching for coverage==3.5
+Best match: coverage 3.5
+Processing coverage-3.5-py2.7-linux-x86_64.egg
+coverage 3.5 is already the active version in easy-install.pth
+Installing coverage script to /home/user/.virtualenvs/ttt/bin
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/coverage-3.5-py2.7-linux-x86_64.egg
+Searching for anyjson==0.3.1
+Best match: anyjson 0.3.1
+Processing anyjson-0.3.1-py2.7.egg
+anyjson 0.3.1 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/anyjson-0.3.1-py2.7.egg
+Searching for PIL==1.1.7
+Best match: PIL 1.1.7
+PIL 1.1.7 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages/PIL
+Searching for Django==1.3
+Best match: Django 1.3
+Django 1.3 is already the active version in easy-install.pth
+
+Using /usr/lib/pymodules/python2.7
+Searching for decorator==3.2.0
+Best match: decorator 3.2.0
+Adding decorator 3.2.0 to easy-install.pth file
+
+Using /usr/lib/python2.7/dist-packages
+Searching for httplib2==0.7.2
+Best match: httplib2 0.7.2
+httplib2 0.7.2 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages
+Searching for oauth==1.0.1
+Best match: oauth 1.0.1
+oauth 1.0.1 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages
+Finished processing dependencies for annotation-server==0.1a
+
+2012-04-19 17:01:52,795 - /home/user/work/nyu/src/annotation_server/check_installationINFO - INFO - Run command python /home/user/work/nyu/setup.py install.
+ Result:
+ 
+2012-04-19 17:01:52,795 - /home/user/work/nyu/src/annotation_server/check_installationINFO - INFO - Command python /home/user/work/nyu/setup.py install was success.
+2012-04-19 17:02:46,790 - /home/user/work/nyu/src/annotation_server/check_installationINFO - INFO - running install
+running bdist_egg
+running egg_info
+writing requirements to src/annotation_server.egg-info/requires.txt
+writing src/annotation_server.egg-info/PKG-INFO
+writing top-level names to src/annotation_server.egg-info/top_level.txt
+writing dependency_links to src/annotation_server.egg-info/dependency_links.txt
+writing requirements to src/annotation_server.egg-info/requires.txt
+writing src/annotation_server.egg-info/PKG-INFO
+writing top-level names to src/annotation_server.egg-info/top_level.txt
+writing dependency_links to src/annotation_server.egg-info/dependency_links.txt
+reading manifest file 'src/annotation_server.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src/annotation_server.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+running build_py
+copying src/annotation_server/update_service.py -> build/lib.linux-x86_64-2.7/annotation_server
+creating build/bdist.linux-x86_64/egg
+creating build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/local_settings.py -> build/bdist.linux-x86_64/egg/annotation_server
+creating build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/urls.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/auth_backends.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/tests.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/admin.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/auth_backends.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/xml2dict.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/forms.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/models.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/admin.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/views.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/utils.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/emiters.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/emiters.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/xml2dict.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/forms.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/models.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/middleware.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/tests.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/urls.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/__init__.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/middleware.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/handlers.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/utils.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+copying build/lib.linux-x86_64-2.7/annotation_server/api/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server/api
+creating build/bdist.linux-x86_64/egg/annotation_server/api/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/api/fixtures/initial_data.json -> build/bdist.linux-x86_64/egg/annotation_server/api/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/api/fixtures/test_data.json -> build/bdist.linux-x86_64/egg/annotation_server/api/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/api/handlers.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api
+creating build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0005_auto__del_field_annotation_coordinates.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0007_auto__del_book__add_target__del_field_annotation_target.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0017_auto__add_field_profile_drupal_id.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0007_auto__del_book__add_target__del_field_annotation_target.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0006_auto__del_unique_annotation_target.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0002_auto__add_book__add_profile__add_annotation.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_rename_author_to_creator.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0001_initial.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0016_rename_author_to_creator.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0011_auto__del_field_constraint_type__del_field_constraint_blob__add_field_.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0004_auto__add_field_annotation_coordinates.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0016_rename_author_to_creator.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0015_rename_creator_to_author.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0008_auto__add_constraint.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0013_retyping_field_private.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0002_auto__add_book__add_profile__add_annotation.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0012_auto__add_field_constraint_annotation.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0001_initial.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0017_auto__add_field_profile_drupal_id.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_auto__chg_field_profile_user_ptr.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0020_auto__del_unique_profile_drupal_uid.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0010_auto__add_field_annotation_has_answers.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_rename_creator_to_author.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0011_auto__del_field_constraint_type__del_field_constraint_blob__add_field_.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0013_retyping_field_private.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0003_auto__add_field_annotation_private.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0006_auto__del_unique_annotation_target.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0020_auto__del_unique_profile_drupal_uid.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0019_auto__add_field_profile_drupal_uid__chg_field_annotation_author.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0010_auto__add_field_annotation_has_answers.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0015_rename_creator_to_author.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0019_auto__add_field_profile_drupal_uid__chg_field_annotation_author.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0005_auto__del_field_annotation_coordinates.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0012_auto__add_field_constraint_annotation.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0014_rename_fields__created_at__modified_at.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0014_rename_fields__created_at__modified_at.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/__init__.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0018_rename_creator_to_author.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0003_auto__add_field_annotation_private.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0004_auto__add_field_annotation_coordinates.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0008_auto__add_constraint.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0009_auto__del_field_annotation_creation_date__add_field_annotation_created.pyc -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+copying build/lib.linux-x86_64-2.7/annotation_server/api/migrations/0009_auto__del_field_annotation_creation_date__add_field_annotation_created.py -> build/bdist.linux-x86_64/egg/annotation_server/api/migrations
+creating build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/text_annon.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/documentation.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/piston
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/piston/authorize_token.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/piston
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/test.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/main.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/profile/does_not_exists.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/profile/profile.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/profile
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/html_emitter
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/html_emitter/default.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/html_emitter
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/openurl.annon.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/base.html -> build/bdist.linux-x86_64/egg/annotation_server/templates
+creating build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activate.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/registration_closed.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/registration_complete.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_change_done.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/registration_form.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_change_form.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/logout.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_form.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activation_email_subject.txt -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activation_email.txt -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_done.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_confirm.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_complete.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/activation_complete.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/logged_out.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/password_reset_email.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/templates/registration/login.html -> build/bdist.linux-x86_64/egg/annotation_server/templates/registration
+copying build/lib.linux-x86_64-2.7/annotation_server/annotation_service.sh -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/annotation_service.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/update_service.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/check_installation.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/urls.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/manage.py -> build/bdist.linux-x86_64/egg/annotation_server
+creating build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/urls.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/tests.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/models.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/views.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/models.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/views.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/tests.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/urls.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/__init__.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/context_processors.pyc -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/profile/context_processors.py -> build/bdist.linux-x86_64/egg/annotation_server/profile
+copying build/lib.linux-x86_64-2.7/annotation_server/__init__.py -> build/bdist.linux-x86_64/egg/annotation_server
+copying build/lib.linux-x86_64-2.7/annotation_server/helpers.py -> build/bdist.linux-x86_64/egg/annotation_server
+creating build/bdist.linux-x86_64/egg/annotation_server/media
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/Cakefile -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/range.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/annotator.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/annotator.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/widget.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/class.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/notification.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/auth.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/unsupported.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/permissions.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/store.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/tags.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/markdown.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/kitchensink.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/plugin/filter.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/viewer.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/editor.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/console.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/src/extensions.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/src
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/annotator.pot -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/l10n-update -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/l10n-new -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale/ru
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/locale/ru/annotator.po -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/locale/ru
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/LICENSE -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/demo.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.store.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.markdown.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.auth.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.min.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.tags.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.permissions.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.unsupported.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/pkg/annotator.filter.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/dev.xhtml -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/src/bookmarklet.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/src
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/config.example.json -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/pkg/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/pkg
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/template.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/README.markdown -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/test/template.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/test/spec/bookmarklet.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/contrib/bookmarklet/test/runner.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/contrib/bookmarklet/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/LICENSE-MIT -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/README.markdown -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/example/openshakespeare/openshakespeare.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/example/openshakespeare/openshakespeare.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/example/openshakespeare/index.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/example/openshakespeare
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/annotator.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/widget.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/extensions.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/json2.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/MIT.LICENSE -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/jasmine.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/jasmine-html.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1/jasmine.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor/jasmine-2.0.0rc1
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/showdown.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jasmine-jquery.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/jquery.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/coffee-script.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/gettext.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/vendor/xpath.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/vendor
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/.gitignore -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/class.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/store.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/tags.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/markdown.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/unsupported.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/auth.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/permissions.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/kitchensink.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/plugin/filter.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/viewer.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/notification.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/editor.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/range.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/lib/console.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/accept.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/edit.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/annotator-icon-sprite.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/note.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/mini_tag.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/delete.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/cancel.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/annotator-glyph-sprite.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/img/mini_person.png -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/img
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/css/annotator.css -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/LICENSE-GPL -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/dev.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/tools
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/tools/make_release.sh -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/tools
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec_helper.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/ajax_fixtures.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/lib/sandbox.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/lib/jasmine.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/lib/specutil.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/lib
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/range_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/widget_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/notification_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/kitchensink_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/markdown_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/auth_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/tags_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/filter_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/permissions_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/plugin/store_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec/plugin
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/editor_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/viewer_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/annotator_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/extensions_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/class_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/spec/console_spec.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/spec
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/runner.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/runner.coffee -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/textnodes.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/delegator.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/range.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/fixtures/xpath.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/fixtures
+creating build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/ajax
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/test/ajax/store.js -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator/test/ajax
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/markup.html -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+copying build/lib.linux-x86_64-2.7/annotation_server/media/annotator/package.json -> build/bdist.linux-x86_64/egg/annotation_server/media/annotator
+creating build/bdist.linux-x86_64/egg/annotation_server/media/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/img/cloud-popup-relative.png -> build/bdist.linux-x86_64/egg/annotation_server/media/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/img/close.gif -> build/bdist.linux-x86_64/egg/annotation_server/media/img
+creating build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/layers-book.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/extend.jquery.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/json2xml.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/jquery.json2xml.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/OpenLayers.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/OpenLayers-full.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+creating build/bdist.linux-x86_64/egg/annotation_server/media/js/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/img/blank.gif -> build/bdist.linux-x86_64/egg/annotation_server/media/js/img
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/OpenLayers-books.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+creating build/bdist.linux-x86_64/egg/annotation_server/media/js/annotator-full
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/annotator-full/annotator-full.min.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js/annotator-full
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/annotator-full/annotator.min.css -> build/bdist.linux-x86_64/egg/annotation_server/media/js/annotator-full
+copying build/lib.linux-x86_64-2.7/annotation_server/media/js/jquery.js -> build/bdist.linux-x86_64/egg/annotation_server/media/js
+creating build/bdist.linux-x86_64/egg/annotation_server/media/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/css/style.css -> build/bdist.linux-x86_64/egg/annotation_server/media/css
+copying build/lib.linux-x86_64-2.7/annotation_server/media/css/site.css -> build/bdist.linux-x86_64/egg/annotation_server/media/css
+copying build/lib.linux-x86_64-2.7/annotation_server/settings.py -> build/bdist.linux-x86_64/egg/annotation_server
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/local_settings.py to local_settings.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/api/views.py to views.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/annotation_service.py to annotation_service.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/update_service.py to update_service.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/check_installation.py to check_installation.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/urls.py to urls.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/manage.py to manage.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/helpers.py to helpers.pyc
+byte-compiling build/bdist.linux-x86_64/egg/annotation_server/settings.py to settings.pyc
+creating build/bdist.linux-x86_64/egg/EGG-INFO
+installing scripts to build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+running install_scripts
+running build_scripts
+copying and adjusting src/annotation_server/update_service.py -> build/scripts-2.7
+creating build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+copying build/scripts-2.7/annotation_service.sh -> build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+copying build/scripts-2.7/update_service.py -> build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+copying build/scripts-2.7/check_installation.py -> build/bdist.linux-x86_64/egg/EGG-INFO/scripts
+changing mode of build/bdist.linux-x86_64/egg/EGG-INFO/scripts/annotation_service.sh to 755
+changing mode of build/bdist.linux-x86_64/egg/EGG-INFO/scripts/update_service.py to 775
+changing mode of build/bdist.linux-x86_64/egg/EGG-INFO/scripts/check_installation.py to 775
+copying src/annotation_server.egg-info/PKG-INFO -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/SOURCES.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/dependency_links.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/requires.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying src/annotation_server.egg-info/top_level.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+creating 'dist/annotation_server-0.1a-py2.7.egg' and adding 'build/bdist.linux-x86_64/egg' to it
+removing 'build/bdist.linux-x86_64/egg' (and everything under it)
+Processing annotation_server-0.1a-py2.7.egg
+creating /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/annotation_server-0.1a-py2.7.egg
+Extracting annotation_server-0.1a-py2.7.egg to /home/user/.virtualenvs/ttt/lib/python2.7/site-packages
+Adding annotation-server 0.1a to easy-install.pth file
+Installing annotation_service.sh script to /home/user/.virtualenvs/ttt/bin
+Installing update_service.py script to /home/user/.virtualenvs/ttt/bin
+Installing check_installation.py script to /home/user/.virtualenvs/ttt/bin
+
+Installed /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/annotation_server-0.1a-py2.7.egg
+Processing dependencies for annotation-server==0.1a
+Searching for django-extensions==0.8
+Best match: django-extensions 0.8
+Processing django_extensions-0.8-py2.7.egg
+django-extensions 0.8 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_extensions-0.8-py2.7.egg
+Searching for flup==1.0.3.dev-20110405
+Best match: flup 1.0.3.dev-20110405
+Processing flup-1.0.3.dev_20110405-py2.7.egg
+flup 1.0.3.dev-20110405 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/flup-1.0.3.dev_20110405-py2.7.egg
+Searching for South==0.7.3
+Best match: South 0.7.3
+Processing South-0.7.3-py2.7.egg
+South 0.7.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/South-0.7.3-py2.7.egg
+Searching for BeautifulSoup==3.2.0
+Best match: BeautifulSoup 3.2.0
+BeautifulSoup 3.2.0 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages
+Searching for simplejson==2.1.2
+Best match: simplejson 2.1.2
+Processing simplejson-2.1.2-py2.7-linux-x86_64.egg
+Removing simplejson 2.1.6 from easy-install.pth file
+simplejson 2.1.2 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/simplejson-2.1.2-py2.7-linux-x86_64.egg
+Searching for piston-mini-client==0.3
+Best match: piston-mini-client 0.3
+Processing piston_mini_client-0.3-py2.7.egg
+Removing piston-mini-client 0.6 from easy-install.pth file
+piston-mini-client 0.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/piston_mini_client-0.3-py2.7.egg
+Searching for nose==1.1.2
+Best match: nose 1.1.2
+Processing nose-1.1.2-py2.7.egg
+nose 1.1.2 is already the active version in easy-install.pth
+Installing nosetests script to /home/user/.virtualenvs/ttt/bin
+Installing nosetests-2.7 script to /home/user/.virtualenvs/ttt/bin
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/nose-1.1.2-py2.7.egg
+Searching for mercurial==1.7.5
+Best match: mercurial 1.7.5
+Processing mercurial-1.7.5-py2.7-linux-x86_64.egg
+Removing mercurial 1.9.1 from easy-install.pth file
+mercurial 1.7.5 is already the active version in easy-install.pth
+Installing hg script to /home/user/.virtualenvs/ttt/bin
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/mercurial-1.7.5-py2.7-linux-x86_64.egg
+Searching for django-registration==0.7
+Best match: django-registration 0.7
+Processing django_registration-0.7-py2.7.egg
+django-registration 0.7 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_registration-0.7-py2.7.egg
+Searching for django-piston==0.2.3
+Best match: django-piston 0.2.3
+Processing django_piston-0.2.3-py2.7.egg
+django-piston 0.2.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_piston-0.2.3-py2.7.egg
+Searching for django-nose==0.1.3
+Best match: django-nose 0.1.3
+Processing django_nose-0.1.3-py2.7.egg
+django-nose 0.1.3 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_nose-0.1.3-py2.7.egg
+Searching for django-debug-toolbar==0.9.4
+Best match: django-debug-toolbar 0.9.4
+Processing django_debug_toolbar-0.9.4-py2.7.egg
+django-debug-toolbar 0.9.4 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/django_debug_toolbar-0.9.4-py2.7.egg
+Searching for coverage==3.5
+Best match: coverage 3.5
+Processing coverage-3.5-py2.7-linux-x86_64.egg
+coverage 3.5 is already the active version in easy-install.pth
+Installing coverage script to /home/user/.virtualenvs/ttt/bin
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/coverage-3.5-py2.7-linux-x86_64.egg
+Searching for anyjson==0.3.1
+Best match: anyjson 0.3.1
+Processing anyjson-0.3.1-py2.7.egg
+anyjson 0.3.1 is already the active version in easy-install.pth
+
+Using /home/user/.virtualenvs/ttt/lib/python2.7/site-packages/anyjson-0.3.1-py2.7.egg
+Searching for PIL==1.1.7
+Best match: PIL 1.1.7
+PIL 1.1.7 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages/PIL
+Searching for Django==1.3
+Best match: Django 1.3
+Django 1.3 is already the active version in easy-install.pth
+
+Using /usr/lib/pymodules/python2.7
+Searching for decorator==3.2.0
+Best match: decorator 3.2.0
+Adding decorator 3.2.0 to easy-install.pth file
+
+Using /usr/lib/python2.7/dist-packages
+Searching for httplib2==0.7.2
+Best match: httplib2 0.7.2
+httplib2 0.7.2 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages
+Searching for oauth==1.0.1
+Best match: oauth 1.0.1
+oauth 1.0.1 is already the active version in easy-install.pth
+
+Using /usr/lib/python2.7/dist-packages
+Finished processing dependencies for annotation-server==0.1a
+
+2012-04-19 17:02:46,878 - /home/user/work/nyu/src/annotation_server/check_installationINFO - INFO - Run command python /home/user/work/nyu/setup.py install.
+ Result:
+ 
+2012-04-19 17:02:46,878 - /home/user/work/nyu/src/annotation_server/check_installationINFO - INFO - Command python /home/user/work/nyu/setup.py install was success.

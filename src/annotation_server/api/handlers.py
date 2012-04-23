@@ -399,7 +399,19 @@ class StatusHandler(BaseHandler):
     methods = ('GET',)
 
     def read(self, request):
-        handler = AnnotationHandler()
-        for method in request:
-            pass
+        from django.db.models.loading import load_app
+        errors = []
+        for app in settings.INSTALLED_APPS:
+            try:
+                load_app(app)
+            except Exception as e:
+                errors.append(
+                    {app: ("Can't load application {0}."
+                           "Error was {1}").format(app, e)}
+                )
+        if errors:
+            return {
+                'status': 'error',
+                'errors': errors
+            }
         return {'status': 'ok'}

@@ -615,3 +615,15 @@ Ran 14 tests in 0.699s
 
 OK
 
+2012-04-19 17:01:52,794 - /home/user/work/nyu/src/annotation_server/check_installationERROR - ERROR - zip_safe flag not set; analyzing archive contents...
+annotation_server.manage: module references __file__
+annotation_server.check_installation: module references __file__
+annotation_server.update_service: module references __file__
+annotation_server.settings: module references __file__
+
+2012-04-19 17:02:46,878 - /home/user/work/nyu/src/annotation_server/check_installationERROR - ERROR - zip_safe flag not set; analyzing archive contents...
+annotation_server.manage: module references __file__
+annotation_server.check_installation: module references __file__
+annotation_server.update_service: module references __file__
+annotation_server.settings: module references __file__
+
