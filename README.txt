@@ -92,10 +92,10 @@ Please read comments below for correct setting up DB access.
 
 Starting and stopping the service:
     If you need to start service you can do it with just one command from the root directory of the project:
-    ./annotation_service.sh start
+    ./annotation_service.py start
 
 Then you can stop service:
-    ./annotation_service.sh stop
+    ./annotation_service.py stop
 
 ( To run the service on the django development server, you can also do:
     python server/manage.py runserver
