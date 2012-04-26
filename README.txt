@@ -204,4 +204,4 @@ Then open you favorite text editor and write something like this in section http
 
 BE AWARE!
 
-Path to the socket file in file annotation_service.sh and in the file nginx.conf should be the same.
+Path to the socket file in file annotation_service.py and in the file nginx.conf should be the same.

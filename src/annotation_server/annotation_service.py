@@ -1,21 +1,31 @@
 #!/usr/bin/python
 
-from annotation_server.helpers import BaseCommand
+from helpers import BaseCommand
 from optparse import make_option, OptionParser
 
 
 from django.core.management import call_command, setup_environ
 import multiprocessing
 from subprocess import Popen
-from annotation_server import settings
 import os, sys, pdb
 
+try:
+    # non local import
+    from annotation_server import settings
+except ImportError as e:
+    # try to do local import
+    try:
+        import settings
+    except ImportError as e:
+        raise Exception("Settings file does not exists! Where is it?")
 
-PID = "/www/sites/annotations/log/django.pid"
-SOCKET = "/www/sites/annotations/log/django.sock"
 
-PID = "/tmp/annotation.pid"
-SOCKET = "/tmp/annotation.socket"
+if not (getattr(settings, "PID", None) and getattr(settings, "SOCKET", None)):
+    PID = "/www/sites/annotations/log/django.pid"
+    SOCKET = "/www/sites/annotations/log/django.sock"
+
+    PID = "/tmp/annotation.pid"
+    SOCKET = "/tmp/annotation.socket"
 
 
 class ArgvHandler(object):

@@ -208,6 +208,9 @@ NOSE_ARGS = [
 ]
 
 
+PID = "/tmp/annotations.pid"
+SOCKET = "/tmp/annotations.sock"
+
 try:
     from local_settings import *
 except ImportError:
