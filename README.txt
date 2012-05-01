@@ -135,7 +135,7 @@ That's all!
 
             ============ Production ===========
 To start service in production I propose you to use NGINX as front end server.
-NGING will serve static files and proxy requests to annotation service.
+NGINX will serve static files and proxy requests to annotation service.
 
 To realize this you should to setup NGINX:
 

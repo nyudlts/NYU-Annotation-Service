@@ -19,13 +19,12 @@ except ImportError as e:
     except ImportError as e:
         raise Exception("Settings file does not exists! Where is it?")
 
+PID = getattr(settings, "PID", None)
+SOCKET = getattr(settings, "SOCKET", None)
 
-if not (getattr(settings, "PID", None) and getattr(settings, "SOCKET", None)):
+if not (PID and SOCKET):
     PID = "/www/sites/annotations/log/django.pid"
     SOCKET = "/www/sites/annotations/log/django.sock"
-
-    PID = "/tmp/annotation.pid"
-    SOCKET = "/tmp/annotation.socket"
 
 
 class ArgvHandler(object):

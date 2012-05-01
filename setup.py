@@ -106,7 +106,7 @@ setup(
     #}, #data_files},
 
     scripts=(
-        'src/annotation_server/annotation_service.sh',
+        'src/annotation_server/annotation_service.py',
         'src/annotation_server/update_service.py',
         'src/annotation_server/check_installation.py',
     ),

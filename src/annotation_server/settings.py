@@ -207,7 +207,59 @@ NOSE_ARGS = [
     '--cover-package=api,profile',
 ]
 
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(asctime)s %(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level':'DEBUG',
+            'class':'django.utils.log.NullHandler',
+        },
+        'console': {
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            #'filters': ['special']
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'annotation_server.log', #### Path to annotation_server.log file.
+            'formatter': 'verbose',
+        },
+        'django_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'django.log' ##### Path to django.log file.
+        },
 
+    },
+    'loggers': {
+        'django': {
+            'handlers':['django_file'],
+            #'propagate': True,
+            'level':'INFO',
+        },
+        'api': {
+            'handlers': ['console', 'file'],
+            'propagate': False,
+            'level': 'INFO'
+        }
+    }
+}
+
+########## Location of PID and socket files.
 PID = "/tmp/annotations.pid"
 SOCKET = "/tmp/annotations.sock"
 
