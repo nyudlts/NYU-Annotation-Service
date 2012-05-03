@@ -35,19 +35,26 @@ class ArgvHandler(object):
 
     '''
     def __init__(self):
-        self.command_name = sys.argv[1].replace(' ', '_')
-        self.args = [
-            i for i in sys.argv[2:]
-        ]
-        # setup django env
+        if len(sys.argv) > 1:
+            self.command_name = sys.argv[1].replace(' ', '_')
+            self.args = [
+                i for i in sys.argv[2:]
+            ]
+       # setup django env
+        else:
+            self.command_name = "_help"
+            self.args = []
         setup_environ(settings)
-
 
     def __call__(self):
         command = getattr(self, self.command_name, None)
         if not callable(command):
             raise NotImplementedError("This command doesn't recognized!")
         command(*self.args)
+
+    def _help(self):
+        print "Here is all commands which you can run:"
+        print "\n".join([" - " + i for i in self.__class__.__dict__.keys() if not i.startswith('_') ])
 
     def _run_command(self, cmd):
         if len(cmd) < 2:

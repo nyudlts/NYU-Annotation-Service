@@ -13,6 +13,30 @@ You can update checked out copy just running commands:
     hg up
     python src/annotation_server/manage.py migrate
 
+
+UPD. 1:
+    Now sources are located on GitHub:
+        https://github.com/lcdhoffman/NYU-Annotation-Service/
+    You can check out the project with command:
+        git clone https://alexbojko@github.com/lcdhoffman/NYU-Annotation-Service.git
+
+To get access to the repository, create an account with 
+GitHub and contact Brian for permission (https://github.com/lcdhoffman).
+
+To update the project you need to run these commands:
+    git update
+    python src/annotation_server/manage.py migrate
+
+
+UPD. 2.
+    To update the project now you can run only one command:
+    python src/annotation_server/update_service.py 
+        --repo_path /home/user/nyu/... # where repository is located
+    This command will update sources, do all DB migrations and etc.
+
+
+How to setup the project?
+
 You need to install python-dev package.
     sudo apt-get install python-dev
 
@@ -42,7 +66,7 @@ This script write all info in logs. Check it.
 
 How to update installed service to newest version?
     In the directory src/annotation_server you can find update_service.py script.
-    Just run it with command:
+    Just run this script with command:
         $python update_service.py
     That's all!
 
@@ -98,7 +122,9 @@ Then you can stop service:
     ./annotation_service.py stop
 
 ( To run the service on the django development server, you can also do:
-    python server/manage.py runserver
+    python annotation_server/manage.py runserver 
+        or
+    python annotation_service.py start_dev
 This will start the django development server on the default port)
 
 After service installation you should to change "Site name" in admin interface.
