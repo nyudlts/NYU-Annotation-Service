@@ -24,7 +24,7 @@ To get access to the repository, create an account with
 GitHub and contact Brian for permission (https://github.com/lcdhoffman).
 
 To update the project you need to run these commands:
-    git update
+    git pull
     python src/annotation_server/manage.py migrate
 
 
