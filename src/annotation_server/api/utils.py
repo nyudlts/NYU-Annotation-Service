@@ -31,8 +31,7 @@ def date_to_utc_format(model, *args, **kwargs):
     if not issubclass(model, models.Model):
         raise ValueError("Can not decorate instance wich isn't models.Model class")
 
-    datetime_format = getattr(
-        settings, "API_DATETIME_FORMAT", "%Y-%m-%dT%h:%MZ")
+    datetime_format = getattr(settings, "API_DATETIME_FORMAT", "%Y-%m-%dT%h:%MZ")
 
     def create_property(field_name):
         def _get_date_utc(self):
@@ -89,16 +88,6 @@ def map_fields(operation='POST', map_in={}, map_out={}):
                     data[v] = data.pop(k)
             setattr(request, operation, data)
         resp = f(self, request, *args, **kwargs)
-        #if map_out:
-            #compl_resp = {}
-            #for k, m in map_out.items():
-                #if hasattr(resp, k):
-                    #setattr(resp, m, getattr(resp, k))
-                    ##delattr(resp, k)
-
-            #for k, v in resp.items():
-                #if k in map_out:
-                    #resp[map_out[k]] = resp.pop(k)
         return resp
     return wrap
 
@@ -275,4 +264,3 @@ def get_object_or_None(model_cls, **kwargs):
         return _get_queryset(model_cls).get(**kwargs)
     except model_cls.DoesNotExist:
         return None
-

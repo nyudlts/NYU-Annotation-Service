@@ -9,49 +9,29 @@ from api.handlers import StatusHandler
 admin.autodiscover()
 
 application = patterns('',
+                       
+    url(r'^$', direct_to_template, { 'template': 'index.html', }, name='index'),
+    
     url(r'^api/', include('api.urls')),
-
-    # django-registration enable
-    url(r'^accounts/', include('registration.urls')),
-
+        
     url(r'^annotations/', include('profile.urls')),
-
-    # The next line to enable the admin:
+    
+    url(r'^accounts/', include('registration.urls')),
+    
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^test_uc1/$', direct_to_template,
-        {
-            'template': 'openurl.annon.html'
-        }, name='test_uc1'
-       ),
-    url(r'test_uc3/$', direct_to_template,
-        {
-            'template': 'text_annon.html'
-        },
-        name='test_uc3'
-       ),
-    #url(r'shib/', include('django_shibboleth.urls')),
-
-    url(r'^$', direct_to_template,
-        {
-            'template': 'test.html',
-            'extra_context': {'form': TestForm()},
-        }, name="index"
-    ),
-
+    url(r'^$', include('profile.urls'), name="index"),
+    
     url(r'^status/?$', Resource(StatusHandler)),
 
-
 )
 
-urlpatterns = patterns('',
-    url(r'^', include(application)),
-)
+urlpatterns = patterns('', url(r'^', include(application)), )
 
-# serving media files
+# Media
 urlpatterns += patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
        'document_root': settings.MEDIA_ROOT,
-        'show_indexes': True,
+       'show_indexes': True,
    })
 )

@@ -30,18 +30,15 @@ class ModelGetOrCreateMultipleChoiceField(forms.ModelMultipleChoiceField):
             raise forms.ValidationError(self.error_messages['required'])
         elif not self.required and not value:
             return []
-        '''
-        BE CAREFULL!!!
-        HERE IS MAY BE A BUG!
-        '''
+        
+        # Bug?
         if isinstance(value, dict):
             value = (value,)
-        '''
-        DELETE previous 2 lines if XML doesn't works fine. 
-        '''
+
+        # DELETE previous 2 lines if XML doesn't works fine. 
+
         if not isinstance(value, (list, tuple)):
             raise forms.ValidationError(self.error_messages['list'])
-
 
         if all(isinstance(i, dict) for i in value):
             values = [i[self.field_name] for i in value]
@@ -60,8 +57,6 @@ class ModelGetOrCreateMultipleChoiceField(forms.ModelMultipleChoiceField):
 
             return qs
         return super(ModelGetOrCreateMultipleChoiceField, self).clean(value)
-
-
 
 class AnnotationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -85,32 +80,23 @@ class AnnotationForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super(AnnotationForm, self).save(commit)
-
-        #if commit:
-        #    print "COMMIT TRUE"
-        #    qs = Annotation.objects.filter(
-        #        target__url__in=[t for t in instance.target.all()],
-        #        has_answers=False,
-        #        deleted=False
-        #    )
-        #    if self.instance.type.lower() == "reply" and qs.count():
-        #        from handlers import log
-        #        log.info("form save qs count {0}".format(qs.count()))
-        #        qs.update(has_answers=True)
         return instance
 
     class Meta:
         model = Annotation
-        exclude = ('author', 'creation_date', 'modification_date',
-                   'deleted', 'deleted_at', 'has_answers'
-                  )
-
-
+        exclude = (
+                   'author',
+                   'creation_date',
+                   'modification_date',
+                   'deleted',
+                   'deleted_at',
+                   'has_answers'
+        )
 
 class ConstraintForm(forms.ModelForm):
-    """This form validates constraints"""
-
     class Meta:
         model = Constraint
-        exclude = ('target', 'annotation',)
-
+        exclude = (
+                   'target',
+                   'annotation',
+        )

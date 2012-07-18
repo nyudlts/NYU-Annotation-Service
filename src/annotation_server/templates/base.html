@@ -1,90 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head> 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>
-        {% block title %}
-        {% endblock %} 
-    </title>
+  <title>{% block title %} {% endblock %}</title>
+  {% block js %}{% endblock %}
+  {% block meta %}
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="NYU Digital Library Technology Services">
+  {% endblock %}
 
-    {% block js %}
-    {% endblock %}
-
-    {% block meta %}
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-    {% endblock %}
-
-    {% block css %}
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/site.css"/>
-    <style>
-        h1,h2,h3,h4,h5,h6 {
-            text-align: center;
-            }
-        table th, table td {
-            width: 150px;
-            text-align: center;
-            }
-        .targets {
-            width: 500px;
-        }
-        .right {
-            float: right; 
-        }
-        .left {
-            float: left;
-        }
-        .w10 {
-            width: 10%;
-        }
-        .w30 {
-            width: 30%;
-        }
-        .w50 {
-            width: 50%;
-        }
-        .w70 {
-            width: 70%;
-        }
-        .crumbs {
-            color: #00C !important;
-            text-decoration: underline;
-            text-align: left;
-            margin: 50px 30% 20px 30%;
-
-
-        }
-        .crumbs a {
-            margin-right: .5em;
-        }
-</style>
+  {% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/base.css" >
     {% endblock %}
 </head>
-<body>
-    <div class="crumbs">
-        {% block crumbs %}
-        <nobr>
-        <a href="{{ current_site }}{% url index %}">Index Test</a>
-        <a href="{{ current_site }}{% url test_uc1 %}">Annotate image</a>
-        <a href="{{ current_site }}{% url test_uc3 %}">Annotate text</a>
-        </nobr>
-
-        <nobr style="float:right;">
-         {% if request.user.is_authenticated %}
-        <a href="{{current_site }}{% url profile creator=request.user.username %}">{{ request.user.username|capfirst }}</a>
-        <a href="{{ current_site }}{% url auth_logout%}">Logout</a>
-        {% else %}
-        <a href="{{ current_site }}{% url registration_register %}">Register</a>
-        <a href="{{ current_site }}{% url auth_login %}">Login</a>
-        {% endif %}
-
-       </nobr>
-
-        {% endblock %}
-    </div>
-    <div class='main'>
-    {% block content %}
-    {% endblock %}
-    </div>
+<body class="page">
+  {% block content %}{% endblock %}
 </body>
 </html>

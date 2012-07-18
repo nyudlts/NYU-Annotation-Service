@@ -4,40 +4,28 @@ import copy
 from piston.handler import BaseHandler
 from piston.resource import rc
 from piston.utils import validate, require_mime
-
 from models import *
 from forms import AnnotationForm, ConstraintForm
-
 from django.utils import simplejson
 from django.db.models import Q
 from django.conf import settings
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
-
 import re
 from xml2dict import fromstring
-
 import logging
-
 from helpers import trace_handler_error, get_traceback
-
-from api.utils import (
-    login_required, map_fields, add_fields_to_request,
-     get_object_or_None, NotFoundError,
-    transform_request_payload
-)
-
+from api.utils import (login_required, map_fields, add_fields_to_request, get_object_or_None, NotFoundError, transform_request_payload)
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
-
+#
+# This handler handles annotations.
+# This handler processes the annotations.
+# Creates a new, removes and returns the list of existing annotations.
+# 
 class AnnotationHandler(BaseHandler):
-    '''
-    This handler handles annotations.
-    This handler processes the annotations.
-    Creates a new, removes and returns the list of existing annotations.
-    '''
     allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
     model = Annotation
 
@@ -46,7 +34,6 @@ class AnnotationHandler(BaseHandler):
     fields = (
         'id',
         ('creator'),
-        #'body',
         'type',
         ('target', ('url',)),
         'coordinates',
@@ -59,92 +46,79 @@ class AnnotationHandler(BaseHandler):
         'text', 'quote',
     )
 
-    fake_username = lambda self, uid: (
-        getattr(settings, 'FAKE_USERNAME', '') + unicode(uid)
-    )
+    fake_username = lambda self, uid: ( getattr(settings, 'FAKE_USERNAME', '') + unicode(uid) )
 
-    mapper={'numFound': ('response.__len__', (), int),
-            'start': ('request.GET.get', ("start", 0), int),
-            'includeDeletions': ('request.GET.get', ("includeDeletions", False), bool),
-            'annotations': ('response', (), list),
-           }
+    mapper = {
+        'numFound': ('response.__len__', (), int),
+        'start': ('request.GET.get', ("start", 0), int),
+        'includeDeletions': ('request.GET.get', ("includeDeletions", False), bool),
+        'annotations': ('response', (), list),
+    }
 
     @add_fields_to_request({'response':  mapper})
+
+    # This method works only when the GET request sended to the server.
+    # Returns a list of annotations.
+    # GET parameters can be:
+    # oldest = oldest item to return (CCYY-MM-DDThh:mm:ssZ);
+    # newest = newest item to return (CCYY-MM-DDThh:mm:ssZ);
+    # start = first item to return (INT);
+    # limit = how much items will be returned (INT);
+    # targetUri = URI for a target (URI);
+    # Not implemented yet
+    # withInlineContent = whether or not to return inline body content (TRUE or FALSE; default = TRUE).
+    #
     def read(self, request, creator_id=None, annotation_id=None, *args, **kwargs):
-        #log.info("read handler works {0}".format(log.name))
-        '''
-        This method works only when the GET request sended to the server.
-
-        Returns a list of annotations.
-        GET parameters can be:
-
-        oldest = oldest item to return (CCYY-MM-DDThh:mm:ssZ);
-
-        newest = newest item to return (CCYY-MM-DDThh:mm:ssZ);
-
-        start = first item to return (INT);
-
-        limit = how much items will be returned (INT);
-
-        targetUri = URI for a target (URI);
-
-        ###### Not implemented yet
-
-        withInlineContent = whether or not to return inline body content (TRUE or FALSE; default = TRUE).
-        '''
-
+        
         def create_date(s):
             reg = (r'(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})'
                   'T(?P<hour>\d{2}):(?P<minutes>\d{2}):(?P<seconds>\d{2})Z')
-            match = re.match(reg, s)
 
+            match = re.match(reg, s)
             mch = lambda d: int(match.group(d))
+            
             return datetime.datetime(
-                year=mch('year'),
-                month=mch('month'),
-                day=mch('day'),
-                hour=mch('hour'),
-                minute=mch('minutes')
+                year = mch('year'),
+                month = mch('month'),
+                day = mch('day'),
+                hour = mch('hour'),
+                minute = mch('minutes')
             )
 
-        includeDeletions = (
-            True if request.GET.get('includeDeletions', 0) == "true"
-            else False)
+        includeDeletions = (True if request.GET.get('includeDeletions', 0) == "true" else False)
+
         active = Annotation.annotations.active()
-        annotations = (active if includeDeletions
-                           else active.filter(deleted=False))
 
-
+        annotations = (active if includeDeletions else active.filter(deleted=False))
 
         def filter_by_creator_id(request, qs, creator_id):
-            ''' This function recievs queryset and creator id.
-            Returns updated queryset, filtered by creator id'''
+            log.info('Filter by creator id')
 
             if request.user.is_authenticated():
                 # exclude from queryset annotations which are private
                 # and are not owned by registered user
                 qs = qs.exclude(~Q(author=request.user), private=True)
+
             else:
                 # if user is not logged in exclude all private annotations
                 qs = qs.exclude(private=True)
 
             # NOTE: Django user id has low priority before drupal user id
+            # Drupal user? we need to remove this.
             if creator_id:
-                user = (get_object_or_None(Profile, username=self.fake_username(creator_id))
-                        or get_object_or_None(Profile, id=creator_id))
+                # user = (get_object_or_None(Profile, username=self.fake_username(creator_id)) or get_object_or_None(Profile, id=creator_id))
+                user = (get_object_or_None(Profile, username=self.fake_username(creator_id)) or get_object_or_None(Profile, id=creator_id))                
+                                
                 if not user:
                     raise NotFoundError('User not found')
 
-                ((log.info("FOUND DRUPAL USER")
-                 if user.drupal_uid else log.info("FOUND DJANGO USER"))
-                 if user else log.info("NO USER FOUND"))
                 qs = qs.filter(author=user) if user else qs
             return qs
 
-
         def filter_by_annotation_id(request, qs, annotation_id, filtered_by_creator=False, creator_id=None):
-            '''This function recieves queryset filtered by user and
-            filters it by anntation id.'''
+            log.info('Filter by annotation id')
+
+            '''This function recieves queryset filtered by user and filters it by anntation id.'''
             if not annotation_id:
                 return qs
 
@@ -153,8 +127,8 @@ class AnnotationHandler(BaseHandler):
 
             kw = dict(
                 id=annotation_id,
-                #deleted=includeDeletions,
             )
+
             if includeDeletions:
                 kw.setdefault('deleted', True)
 
@@ -166,42 +140,43 @@ class AnnotationHandler(BaseHandler):
                     deleted=True if includeDeletions else False
                 ).exclude(id=annotation.id)
             return qs.filter(**kw)
-
-
+        
+        #
+        # Filter by constraint
+        # date: oldest, newest
+        # targetUri: URI
+        # start: number
+        # limit: number
+        #
         def filter_by_constraint(request, qs):
-            '''This funcion filters annotations by:
-                date
-                    oldest
-                    newest
-                targetUri
-            Do slice of queryset:
-                start
-                limit
-            '''
+
             constraints = {
                 'oldest': lambda v: ('creation_date__lte', create_date(v)),
                 'newest': lambda v: ('creation_date__gte', create_date(v)),
                 'targetUri': lambda v: ('target__url__icontains', v),
             }
-                #'withInlineContent')
+
             q = dict(q_rep(request.GET.get(con))
-                      for con, q_rep in constraints.items()
-                      if con in request.GET)
+                for con, q_rep in constraints.items()
+                if con in request.GET)
+
             if q:
                 qs = qs.filter(**q)
+
             return qs
 
 
         def filter_by_limit(request, qs):
+            
             try:
                 start = int(request.GET.get('start', 0))
                 limit = int(request.GET.get('limit', request.GET.get('rows', 50)))
                 end = start + limit
+                
             except ValueError:
-                log.error(("Can not convert arguments start and stop "
-                           "to int. start={0} and stop={1}".format(start, stop)))
                 start = 0
                 end = 50
+
             return qs.order_by('creation_date')[start: end]
 
 
@@ -209,19 +184,24 @@ class AnnotationHandler(BaseHandler):
             return name in request.GET
 
         try:
+            
             if creator_id:
                 annotations = filter_by_creator_id(request, annotations, creator_id)
 
             if annotation_id:
                 annotations = filter_by_annotation_id(request, annotations, annotation_id)
-
+                
+            annotations = filter_by_constraint(request, annotations)                
+                
             return filter_by_limit(request, annotations)
-            #return delete_content_from_deleted_annots(request, limited)
 
         except NotFoundError as e:
+            
             log.info(u"Error in AnnotationHandler.read(). Error was "+get_traceback())
             raise e
+        
         except Exception as e:
+            
             log.info(u"Error in AnnotationHandler.read(). Error was "+get_traceback())
             raise e
 
@@ -232,47 +212,41 @@ class AnnotationHandler(BaseHandler):
     @map_fields('POST', map_in={'text': 'body'})
     # NOTE: this decorator replaces field "text" into POST payload with field named "body" with the same content.
     @validate(AnnotationForm, 'POST')
+
+    #
+    # Creates new annotation.
+    # This function should takes JSON or XML.
+    #
+    # Recieved XML or json should contains fields: 'body', 'type', 'target'
+    # and may contain field 'ranges' which would be saved as 'constraints' field in
+    # new annotation.
+    #
     def create(self, request, creator_id, **kwargs):
-        '''
-        This method works only when POST request sended to the server.
-
-        Creates new annotation.
-        This function should takes JSON or XML.
-
-        Recieved XML or json should contains fields: 'body', 'type', 'target'
-        and may contain field 'ranges' which would be saved as 'constraints' field in
-        new annotation.
-        '''
-
 
         def get_user(request, creator=None):
-            log.info("get_or_create_user FUNC")
-            if creator and request.user.is_anonymous():
-                log.info("ID is {0} and user is anonymous".format(creator_id))
-                return Profile.objects.get_or_create(
-                    drupal_uid=creator,
-                    username=self.fake_username(creator)
-                )[0]
-            elif request.user.is_authenticated():
-                log.info("User is Authenticated")
-                return request.user
-            else:
-                log.info("ERROR fully anonymously user")
-                return {
-                    'error': ("Can not create annotation with fully "
-                              "annonymous user. Please login or provide drupal_uid.")}
 
+            if creator and request.user.is_anonymous():
+                return Profile.objects.get_or_create(drupal_uid=creator,username=self.fake_username(creator))[0]
+                
+            elif request.user.is_authenticated():
+                return request.user
+            
+            else:
+                return {
+                    'error': ("Can not create annotation with fully annonymous user. Please login or provide drupal_uid.")
+                }
+
+        #
+        # Saves constraints and returns saved constraints instances.
+        # argument "field_name" define where constraints are locate in request.POST
+        #
         def save_constraints(request, annotation, field_name='ranges'):
-            '''
-            This function saves constraints and returns saved constraints instances.
-            argument "field_name" define where ocnstraints are locate in request.POST
-            '''
+
             if field_name in request.POST:
-                print "savin' constraints {0}".format(
-                    request.POST.get(field_name, "No ranges in request.POST")
-                )
+                print "savin' constraints {0}".format(request.POST.get(field_name, "No ranges in request.POST"))
+                
+                # save constraints if exists
                 def save_one(data):
-                    # save constraints if exists
                     form = ConstraintForm(data)
                     if form.is_valid():
                         const = form.save(commit=False)
@@ -280,6 +254,7 @@ class AnnotationHandler(BaseHandler):
                         const.save()
                         const.target = annotation.target.all()
                         return const
+                    
                     else:
                         return
                 return [save_one(i)
@@ -288,6 +263,7 @@ class AnnotationHandler(BaseHandler):
                        ]
 
         try:
+
             creator_id = get_user(request, creator_id)
             annotation = request.form.save(commit=False)
             annotation.author = creator_id
@@ -406,8 +382,7 @@ class StatusHandler(BaseHandler):
                 load_app(app)
             except Exception as e:
                 errors.append(
-                    {app: ("Can't load application {0}."
-                           "Error was {1}").format(app, e)}
+                    {app: ("Can't load application {0}. Error was {1}").format(app, e)}
                 )
         if errors:
             return {

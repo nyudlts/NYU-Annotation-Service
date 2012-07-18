@@ -1,13 +1,12 @@
-# These classes are represents emiters for HTML and other no standart formats.
 from piston.emitters import Emitter, XMLEmitter, JSONEmitter
 from django.template import Context, loader
 from piston.utils import HttpStatusCode, Mimer
 from django.utils.xmlutils import SimplerXMLGenerator
+
 try:
     import cStringIO as StringIO
 except ImportError:
     import StringIO
-
 
 def render_to(template, data):
     t = loader.get_template(template)
@@ -19,7 +18,6 @@ def render_to(template, data):
 class XMLEmitter(XMLEmitter):
     def render(self, request):
         stream = StringIO.StringIO()
-
         xml = SimplerXMLGenerator(stream, "utf-8")
         xml.startDocument()
         self._to_xml(xml, self.construct())
@@ -36,4 +34,3 @@ class HTMLEmitter(Emitter):
 
 Emitter.register('xml', XMLEmitter, 'text/xml; charset=utf-8')
 Mimer.register(lambda *a: None, ('text/xml',))
-#Mimer.register()
